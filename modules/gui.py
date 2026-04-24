@@ -1,7 +1,7 @@
 from glm import pos
 from imgui_bundle import imgui as ImGui, icons_fontawesome_6
 import threading
-from modules.state import state
+from modules.config import state, Config
 from modules.downloads import Dowloads
 
 tab_bar_width = 90
@@ -30,7 +30,7 @@ class Gui():
         draw_list.add_rect_filled(
             p, 
             ImGui.ImVec2(p.x + tab_bar_width, p.y + full_height), 
-            ImGui.get_color_u32(ImGui.ImColor(4, 4, 4, 255).value), 
+            ImGui.get_color_u32(ImGui.ImColor(*Config.color_secondary).value), 
             15.0,
             ImGui.ImDrawFlags_.round_corners_left
         )
@@ -38,7 +38,7 @@ class Gui():
         draw_list.add_rect(
             p, 
             ImGui.ImVec2(p.x + tab_bar_width, p.y + full_height), 
-            ImGui.get_color_u32(ImGui.ImColor(50, 50, 50, 60).value),
+            ImGui.get_color_u32(ImGui.ImColor(*Config.color_border).value),
             15.0,
             ImGui.ImDrawFlags_.round_corners_left,
             1.0
@@ -105,8 +105,8 @@ class Gui():
     def navbar():
         avail = ImGui.get_content_region_avail()
 
-        ImGui.push_style_color(ImGui.Col_.border, ImGui.ImColor(50, 50, 50, 60).value) 
-        ImGui.push_style_color(ImGui.Col_.child_bg, ImGui.ImColor(4, 4, 4, 255).value)
+        ImGui.push_style_color(ImGui.Col_.border, ImGui.ImColor(*Config.color_border).value) 
+        ImGui.push_style_color(ImGui.Col_.child_bg, ImGui.ImColor(*Config.color_secondary).value)
         
         ImGui.push_style_var(ImGui.StyleVar_.child_rounding, 5.0)
         if ImGui.begin_child("navbar", ImGui.ImVec2(avail.x, 50), ImGui.ChildFlags_.borders):

@@ -1,9 +1,10 @@
 import json
 import os
 from imgui_bundle import imgui as ImGui, immapp, hello_imgui, icons_fontawesome_6
+from modules import config
 from modules.downloads import Dowloads
 from modules.gui import Gui
-from modules.state import state
+from modules.config import state, Config
 
 font_with_icons = None
 
@@ -41,7 +42,7 @@ def gui():
 
     ImGui.set_next_window_size(ImGui.ImVec2(750, 500), ImGui.Cond_.always)
     ImGui.push_style_var(ImGui.StyleVar_.window_padding, ImGui.ImVec2(0, 0))
-    ImGui.push_style_color(ImGui.Col_.window_bg, ImGui.ImColor(4, 4, 4, 255).value)
+    ImGui.push_style_color(ImGui.Col_.window_bg, ImGui.ImColor(*Config.color_background).value)
     ImGui.push_style_color(ImGui.Col_.border, ImGui.ImColor(0, 0, 0, 255).value)
     ImGui.begin("ISO Downloader", None, ImGui.WindowFlags_.no_title_bar | ImGui.WindowFlags_.no_resize) 
 

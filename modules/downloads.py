@@ -1,6 +1,6 @@
 import requests
 import os
-from modules.state import state
+from modules.config import state
 
 class Dowloads:
     @staticmethod
