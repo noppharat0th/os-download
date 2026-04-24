@@ -1,3 +1,4 @@
+from glm import pos
 from imgui_bundle import imgui as ImGui, icons_fontawesome_6
 import threading
 from modules.state import state
@@ -22,28 +23,44 @@ class Gui():
     def render_screen(windows_list, linux_list):
         p = ImGui.get_cursor_screen_pos()
         draw_list = ImGui.get_window_draw_list()
-        rounding = 15.0
+        tab_bar_width = 90
+        full_height = ImGui.get_content_region_avail().y 
 
+        # SIDEBAR
         draw_list.add_rect_filled(
             p, 
-            ImGui.ImVec2(p.x + tab_bar_width, p.y + 470), 
-            ImGui.get_color_u32(ImGui.ImColor(19, 19, 19, 255).value), 
-            rounding,
+            ImGui.ImVec2(p.x + tab_bar_width, p.y + full_height), 
+            ImGui.get_color_u32(ImGui.ImColor(4, 4, 4, 255).value), 
+            15.0,
             ImGui.ImDrawFlags_.round_corners_left
         )
 
-        ImGui.push_style_color(ImGui.Col_.child_bg, ImGui.ImColor(0, 0, 0, 0).value)
-        ImGui.push_style_var(ImGui.StyleVar_.window_padding, ImGui.ImVec2(0, 0))
+        draw_list.add_rect(
+            p, 
+            ImGui.ImVec2(p.x + tab_bar_width, p.y + full_height), 
+            ImGui.get_color_u32(ImGui.ImColor(50, 50, 50, 60).value),
+            15.0,
+            ImGui.ImDrawFlags_.round_corners_left,
+            1.0
+        )
 
-        if ImGui.begin_child("tabbar", ImGui.ImVec2(tab_bar_width, 470)):
+        ImGui.push_style_color(ImGui.Col_.child_bg, ImGui.ImColor(0, 0, 0, 0).value)
+        if ImGui.begin_child("sidebar", ImGui.ImVec2(tab_bar_width, full_height)):
             for item in tab_menu:
                 Gui.drwa_tab_menu(item['icon'], item['name'])
-
         ImGui.end_child()
-        ImGui.pop_style_var()
+
         ImGui.pop_style_color()
+        
+        ImGui.push_style_var(ImGui.StyleVar_.item_spacing, ImGui.ImVec2(0, 0))
 
+        ImGui.same_line() 
 
+        # NAVBAR
+        Gui.navbar()
+
+        ImGui.pop_style_var()
+        
         # if state.is_downloading:
         #     ImGui.begin_disabled()
         #     ImGui.button("Downloading in progress...", ImGui.ImVec2(-1, 45))
@@ -84,3 +101,20 @@ class Gui():
             print(f"Clicked {label_id}")
 
         ImGui.pop_style_color(4)
+
+    def navbar():
+        avail = ImGui.get_content_region_avail()
+
+        ImGui.push_style_color(ImGui.Col_.border, ImGui.ImColor(50, 50, 50, 60).value) 
+        ImGui.push_style_color(ImGui.Col_.child_bg, ImGui.ImColor(4, 4, 4, 255).value)
+        
+        ImGui.push_style_var(ImGui.StyleVar_.child_rounding, 5.0)
+        if ImGui.begin_child("navbar", ImGui.ImVec2(avail.x, 50), ImGui.ChildFlags_.borders):
+            ImGui.set_cursor_pos_y(15) 
+            ImGui.set_cursor_pos_x(15)
+            ImGui.text_disabled("OS DOWNLOADER > WINDOWS")
+            
+        ImGui.end_child()
+
+        ImGui.pop_style_var()
+        ImGui.pop_style_color(2)
