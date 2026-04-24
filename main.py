@@ -40,14 +40,16 @@ def gui():
     style.frame_rounding = 5.0
 
     ImGui.set_next_window_size(ImGui.ImVec2(750, 500), ImGui.Cond_.always)
+    ImGui.push_style_var(ImGui.StyleVar_.window_padding, ImGui.ImVec2(0, 0))
     ImGui.begin("ISO Downloader", None, ImGui.WindowFlags_.no_title_bar | ImGui.WindowFlags_.no_resize) 
     ImGui.spacing()
 
     Gui.render_screen(windows_list, linux_list)
 
-    ImGui.spacing()
-    ImGui.progress_bar(state.download_progress, ImGui.ImVec2(-1, 25), f"{state.download_progress*100:.1f}%")
+    # ImGui.spacing()
+    # ImGui.progress_bar(state.download_progress, ImGui.ImVec2(-1, 25), f"{state.download_progress*100:.1f}%")
     ImGui.end()
+    ImGui.pop_style_var()
 
     if font_with_icons is not None:
         ImGui.pop_font()
