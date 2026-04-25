@@ -40,7 +40,7 @@ def gui():
     style.window_rounding = 15.0
     style.frame_rounding = 5.0
 
-    ImGui.set_next_window_size(ImGui.ImVec2(750, 500), ImGui.Cond_.always)
+    ImGui.set_next_window_size(ImGui.ImVec2(900, 600), ImGui.Cond_.always)
     ImGui.push_style_var(ImGui.StyleVar_.window_padding, ImGui.ImVec2(0, 0))
     ImGui.push_style_color(ImGui.Col_.window_bg, ImGui.ImColor(*Config.color_background).value)
     ImGui.push_style_color(ImGui.Col_.border, ImGui.ImColor(0, 0, 0, 255).value)
