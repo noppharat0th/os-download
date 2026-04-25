@@ -1,4 +1,6 @@
 
+import time
+
 import cv2
 from glm import pos
 from imgui_bundle import ImColor, imgui as ImGui, icons_fontawesome_6, immvision
@@ -24,7 +26,8 @@ tab_menu = [
 class Gui():
     current_page = "Home"
     particles = []
-    last_time = 0
+    progress_states = {}
+    last_time = time.time()
     os_images = {}
     logo = None
 
@@ -176,7 +179,7 @@ class Gui():
         ImGui.push_style_var(ImGui.StyleVar_.window_padding, ImGui.ImVec2(15, 15))
         ImGui.push_style_var(ImGui.StyleVar_.item_spacing, ImGui.ImVec2(10, 10))
         
-        if ImGui.begin_child("content", ImGui.ImVec2(content_avail.x, content_avail.y)):
+        if ImGui.begin_child("content", ImGui.ImVec2(content_avail.x, content_avail.y), ImGui.ChildFlags_.borders, ImGui.WindowFlags_.no_scrollbar):
             
 
             ImGui.text_colored(ImGui.ImVec4(0.6, 0.6, 0.6, 1.0), label)
@@ -238,7 +241,10 @@ class Gui():
                         if ImGui.button("DownLoad", ImGui.ImVec2(button_width, 30)):
                             pass
                         
+                        download_percent = 0.65 
+                        Gui.progress("download_id_1", download_percent)
                         ImGui.end_group()
+
                         
                         
                 ImGui.end_child()
@@ -247,4 +253,45 @@ class Gui():
 
         ImGui.end_child()
         ImGui.pop_style_var(2)
+
+
+    def progress(id, fraction, width=-1, height=12):
+        if width == -1:
+            width = ImGui.get_content_region_avail().x
         
+        p_min = ImGui.get_cursor_screen_pos()
+        p_max = ImGui.ImVec2(p_min.x + width, p_min.y + height)
+        draw_list = ImGui.get_window_draw_list()
+
+        current_time = time.time()
+        dt = current_time - Gui.last_time
+        Gui.last_time = current_time
+        
+        anim_val = Gui.progress_states.get(id, 0.0)
+        anim_val += (fraction - anim_val) * (5.0 * dt)
+        Gui.progress_states[id] = anim_val
+
+        bg_color = ImGui.get_color_u32(ImGui.ImColor(30, 30, 35, 255).value)
+        draw_list.add_rect_filled(p_min, p_max, bg_color, 10.0)
+
+        if anim_val > 0.01:
+            bar_max_x = p_min.x + (width * anim_val)
+            bar_p_max = ImGui.ImVec2(bar_max_x, p_max.y)
+
+            primary_col = ImGui.ImColor(*Config.color_primary).value
+
+            glow_col = ImGui.get_color_u32(ImGui.ImColor(
+                Config.color_primary[0], 
+                Config.color_primary[1], 
+                Config.color_primary[2], 0.3).value)
+            
+            draw_list.add_rect_filled(p_min, bar_p_max, ImGui.get_color_u32(primary_col), 10.0)
+            
+            draw_list.add_line(
+                ImGui.ImVec2(p_min.x + 5, p_min.y + 3),
+                ImGui.ImVec2(bar_max_x - 5, p_min.y + 3),
+                ImGui.get_color_u32(ImGui.ImColor(255, 255, 255, 50).value), 1.0
+            )
+            
+        ImGui.set_cursor_screen_pos(ImGui.ImVec2(p_min.x, p_max.y + 5))
+        ImGui.dummy(ImGui.ImVec2(width, height))
