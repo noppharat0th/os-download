@@ -1,3 +1,4 @@
+
 import cv2
 from glm import pos
 from imgui_bundle import imgui as ImGui, icons_fontawesome_6, immvision
@@ -21,10 +22,13 @@ tab_menu = [
 ]
 
 class Gui():
+    current_page = "Home"
     particles = []
     last_time = 0
-    window_img = None
+    os_images = {}
+    logo = None
 
+    # overlay
     def render_particles():
         draw_list = ImGui.get_window_draw_list()
         window_pos = ImGui.get_window_pos()
@@ -44,17 +48,23 @@ class Gui():
                 p.color
             )
 
-    def load_assets():
+    # load image from assets
+    def load_assets(windows_list, linux_list):
         immvision.use_rgb_color_order() 
-        img = cv2.imread("assets/kali.png")
-        if img is not None:
-            Gui.window_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        else:
-            print("not found image")
+        # img = cv2.imread("assets/arch-linux.png")
+        # logo = cv2.imread("assets/logo.png")
 
+        all_os = windows_list + linux_list
+
+        for os in all_os:
+            img_path = os.get('img', 'assets/linux.jpg')
+            img = cv2.imread(img_path)
+            Gui.os_images[os['id']] = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+    # render screen main
     def render_screen(windows_list, linux_list):
-        if Gui.window_img is None:
-            Gui.load_assets()
+        if not Gui.os_images:
+            Gui.load_assets(windows_list, linux_list)
 
         p = ImGui.get_cursor_screen_pos()
         draw_list = ImGui.get_window_draw_list()
@@ -82,7 +92,9 @@ class Gui():
         ImGui.push_style_color(ImGui.Col_.child_bg, ImGui.ImColor(0, 0, 0, 0).value)
         if ImGui.begin_child("sidebar", ImGui.ImVec2(tab_bar_width, full_height)):
             for item in tab_menu:
-                Gui.draw_tab_menu(item['icon'], item['name'])
+                is_active = (Gui.current_page == item['name'])
+                if Gui.draw_tab_menu(item['icon'], item['name'], is_active):
+                    Gui.current_page = item['name']
         ImGui.end_child()
         ImGui.pop_style_color()   
 
@@ -100,11 +112,12 @@ class Gui():
         margin_y = 20.0
         current_pos = ImGui.get_cursor_pos()
         ImGui.set_cursor_pos(ImGui.ImVec2(current_pos.x + margin_x, current_pos.y + margin_y))
-        Gui.card_show_os("Window", windows_list)
-        Gui.card_show_os("Linux", linux_list)
+        if Gui.current_page == "Home":
+            Gui.card_show_os("Window", windows_list)
+            Gui.card_show_os("Linux", linux_list)
 
         ImGui.end_group()
-        ImGui.pop_style_var(1)
+        ImGui.pop_style_var()
     
     # def os_list(label, os_list):
     #     ImGui.text_disabled(label)
@@ -122,19 +135,24 @@ class Gui():
     #         if disble_button:
     #             ImGui.end_disabled()
         
-    def draw_tab_menu(icon, label_id):
+    def draw_tab_menu(icon, label_id, is_active=False):
         btn_width = 60
-        ImGui.set_cursor_pos_x((tab_bar_width - btn_width) / 2)
+        ImGui.set_cursor_pos_x((90 - btn_width) / 2)
+
+        if is_active:
+            ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(*Config.color_primary).value)
+        else:
+            ImGui.push_style_color(ImGui.Col_.text, ImGui.ImVec4(0.5, 0.5, 0.5, 1.0))
 
         ImGui.push_style_color(ImGui.Col_.button, ImGui.ImVec4(0, 0, 0, 0))
         ImGui.push_style_color(ImGui.Col_.border, ImGui.ImVec4(0, 0, 0, 0))
         ImGui.push_style_color(ImGui.Col_.button_hovered, ImGui.ImVec4(0, 0, 0, 0))
         ImGui.push_style_color(ImGui.Col_.button_active, ImGui.ImVec4(0, 0, 0, 0))
         
-        if ImGui.button(f"{icon}##{label_id}", ImGui.ImVec2(btn_width, 60)):
-            print(f"Clicked {label_id}")
-
-        ImGui.pop_style_color(4)
+        clicked = ImGui.button(f"{icon}##{label_id}", ImGui.ImVec2(btn_width, 60))
+        ImGui.pop_style_color(5)
+        
+        return clicked
 
     def navbar():
         avail = ImGui.get_content_region_avail()
@@ -171,7 +189,9 @@ class Gui():
                 if ImGui.begin_child(f"card_{item['id']}", ImGui.ImVec2(-15, 180), ImGui.ChildFlags_.borders, ImGui.WindowFlags_.no_scrollbar | ImGui.WindowFlags_.no_scroll_with_mouse):
 
                     # Card image
-                    if Gui.window_img is not None:
+                    current_img = Gui.os_images.get(item['id'])
+
+                    if current_img is not None:
                         params = immvision.ImageParams()
                         params.show_image_info = False
                         params.show_zoom_buttons = False
@@ -184,7 +204,7 @@ class Gui():
                         height = int(272 * scale)
                         
                         params.image_display_size = (width, height) 
-                        immvision.image(f"##{label}", Gui.window_img, params)
+                        immvision.image(f"##img_{item['id']}", current_img, params)
 
                         ImGui.same_line()
 
