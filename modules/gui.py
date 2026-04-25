@@ -182,7 +182,8 @@ class Gui():
         if ImGui.begin_child("content", ImGui.ImVec2(content_avail.x, content_avail.y), ImGui.ChildFlags_.borders, ImGui.WindowFlags_.no_scrollbar):
             
 
-            ImGui.text_colored(ImGui.ImVec4(0.6, 0.6, 0.6, 1.0), label)
+            # ImGui.text_colored(ImGui.ImVec4(0.6, 0.6, 0.6, 1.0), label)
+            Gui.title_os(label, "hello download os from me")
             ImGui.spacing()
 
             for item in os_list:
@@ -246,7 +247,6 @@ class Gui():
                         ImGui.end_group()
 
                         
-                        
                 ImGui.end_child()
                 ImGui.pop_style_color(2)
                 ImGui.pop_style_var(2)
@@ -295,3 +295,54 @@ class Gui():
             
         ImGui.set_cursor_screen_pos(ImGui.ImVec2(p_min.x, p_max.y + 5))
         ImGui.dummy(ImGui.ImVec2(width, height))
+
+    def title_os(title_text="ass", desc_text="ss"):
+        draw = ImGui.get_window_draw_list()
+        pos = ImGui.get_cursor_screen_pos()
+        
+        box_size = 45.0
+        rounding = 8.0
+
+        draw.add_rect_filled(
+            pos,
+            ImGui.ImVec2(pos.x + box_size, pos.y + box_size),
+            ImGui.get_color_u32(ImColor(*Config.color_secondary).value),
+            rounding
+        )
+        draw.add_rect(
+            pos,
+            ImGui.ImVec2(pos.x + box_size, pos.y + box_size),
+            ImGui.get_color_u32(ImColor(*Config.color_border).value),
+            rounding, 0, 1.2
+        )
+
+        icon_text = "OS"
+        text_size = ImGui.calc_text_size(icon_text)
+        draw.add_text(
+            ImGui.ImVec2(pos.x + (box_size - text_size.x)/2, pos.y + (box_size - text_size.y)/2), 
+            ImGui.get_color_u32(ImColor(*Config.color_primary).value), 
+            icon_text
+        )
+
+        title_size = ImGui.calc_text_size(title_text)
+        desc_size = ImGui.calc_text_size(desc_text)
+        
+        item_spacing_y = 2.0
+        
+        total_text_height = title_size.y + desc_size.y + item_spacing_y
+        
+        start_y_offset = (box_size - total_text_height) / 2.0
+
+        ImGui.set_cursor_screen_pos(ImGui.ImVec2(pos.x + box_size + 15, pos.y + start_y_offset))
+        
+        ImGui.begin_group()
+        
+        ImGui.text(title_text)
+
+        ImGui.set_cursor_pos_y(ImGui.get_cursor_pos_y() - 5)
+        
+        ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(150, 150, 150, 255).value)
+        ImGui.text(desc_text)
+        ImGui.pop_style_color()
+        
+        ImGui.end_group()
