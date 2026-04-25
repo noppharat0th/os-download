@@ -1,3 +1,6 @@
+import stat
+import time
+
 import requests
 import os
 from modules.config import state
@@ -32,9 +35,11 @@ class Dowloads:
         state.status_msg = f"Downloading {filename}..."
         state.current_file = filename
         state.download_progress = 0.0
+        state.start_time = time.time()
         
         def on_progress(p):
             state.download_progress = p 
+            state.elapsed_time_download = time.time() - state.start_time
 
         if not os.path.exists("downloads"):
             os.makedirs("downloads")

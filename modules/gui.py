@@ -5,7 +5,7 @@ import cv2
 from glm import pos
 from imgui_bundle import ImColor, imgui as ImGui, icons_fontawesome_6, immvision
 import threading
-from modules.config import state, Config
+from modules.config import state, Config, format_time
 from modules.downloads import Dowloads
 from modules.overlay import Particle
 
@@ -227,10 +227,19 @@ class Gui():
                         ImGui.pop_text_wrap_pos()
 
                         ImGui.spacing()
-                        ImGui.text("status :")
-                        ImGui.same_line()
-                        ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(*Config.color_primary).value)
-                        ImGui.text("active")
+
+                        if state.is_downloading and state.current_download_id == item['id']:
+                            time_str = format_time(state.elapsed_time_download)
+                            ImGui.text("time :")
+                            ImGui.same_line()
+                            ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(*Config.color_primary).value)
+                            ImGui.text(time_str)
+                        else :
+                            ImGui.text("status :")
+                            ImGui.same_line()
+                            ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(*Config.color_primary).value)
+                            ImGui.text("active")
+
                         ImGui.pop_style_color()
                         ImGui.same_line()
 
@@ -278,7 +287,7 @@ class Gui():
         Gui.last_time = current_time
         
         anim_val = Gui.progress_states.get(id, 0.0)
-        anim_val += (fraction - anim_val) * (5.0 * dt)
+        anim_val += (fraction - anim_val) * (7.0 * dt)
         Gui.progress_states[id] = anim_val
 
         bg_color = ImGui.get_color_u32(ImGui.ImColor(30, 30, 35, 255).value)
