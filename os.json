@@ -9,16 +9,16 @@
     ],
     "linux": [
         {
-            "id": "ubuntu_24_lts",
-            "display_name": "Ubuntu 24.04.1 (Official)",
-            "url": "https://releases.ubuntu.com/24.04.1/ubuntu-24.04.1-desktop-amd64.iso",
-            "img": "assets/ubuntu-linux.png"
-        },
-        {
             "id": "arch_linuux",
             "display_name": "Arch Linux (Official)",
             "url": "https://releases.ubuntu.com/24.04.1/ubuntu-24.04.1-desktop-amd64.iso",
             "img": "assets/arch-linux.png"
+        },
+        {
+            "id": "ubuntu_24_lts",
+            "display_name": "Ubuntu 24.04.1 (Official)",
+            "url": "https://releases.ubuntu.com/24.04.1/ubuntu-24.04.1-desktop-amd64.iso",
+            "img": "assets/ubuntu-linux.png"
         },
         {
             "id": "kali_latest",

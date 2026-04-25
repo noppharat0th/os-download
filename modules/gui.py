@@ -1,7 +1,7 @@
 
 import cv2
 from glm import pos
-from imgui_bundle import imgui as ImGui, icons_fontawesome_6, immvision
+from imgui_bundle import ImColor, imgui as ImGui, icons_fontawesome_6, immvision
 import threading
 from modules.config import state, Config
 from modules.downloads import Dowloads
@@ -164,7 +164,7 @@ class Gui():
         if ImGui.begin_child("navbar", ImGui.ImVec2(avail.x, 50), ImGui.ChildFlags_.borders):
             ImGui.set_cursor_pos_y(15) 
             ImGui.set_cursor_pos_x(15)
-            ImGui.text_disabled("OS DOWNLOADER > WINDOWS")
+            ImGui.text_disabled("")
             
         ImGui.end_child()
 
@@ -177,7 +177,8 @@ class Gui():
         ImGui.push_style_var(ImGui.StyleVar_.item_spacing, ImGui.ImVec2(10, 10))
         
         if ImGui.begin_child("content", ImGui.ImVec2(content_avail.x, content_avail.y)):
-                
+            
+
             ImGui.text_colored(ImGui.ImVec4(0.6, 0.6, 0.6, 1.0), label)
             ImGui.spacing()
 
@@ -209,6 +210,8 @@ class Gui():
                         ImGui.same_line()
 
                         # Card info
+                        pos = ImGui.get_cursor_pos()
+                        ImGui.set_cursor_pos_x(pos.x + 17)
                         ImGui.begin_group()
                         ImGui.text(item['display_name'])
     
@@ -220,8 +223,21 @@ class Gui():
                         ImGui.pop_text_wrap_pos()
 
                         ImGui.spacing()
-                        ImGui.text("version 1.1")
-                        ImGui.button("DownLoad")
+                        ImGui.text("status :")
+                        ImGui.same_line()
+                        ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(*Config.color_primary).value)
+                        ImGui.text("active")
+                        ImGui.pop_style_color()
+                        ImGui.same_line()
+
+                        button_width = 100
+                        right_padding = 10
+
+                        target_x = ImGui.get_window_width() - button_width - right_padding
+                        ImGui.set_cursor_pos_x(target_x)
+                        if ImGui.button("DownLoad", ImGui.ImVec2(button_width, 30)):
+                            pass
+                        
                         ImGui.end_group()
                         
                         
@@ -231,3 +247,4 @@ class Gui():
 
         ImGui.end_child()
         ImGui.pop_style_var(2)
+        
