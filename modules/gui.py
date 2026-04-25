@@ -4,6 +4,7 @@ from imgui_bundle import imgui as ImGui, icons_fontawesome_6, immvision
 import threading
 from modules.config import state, Config
 from modules.downloads import Dowloads
+from modules.overlay import Particle
 
 tab_bar_width = 90
 tab_menu = [
@@ -20,7 +21,28 @@ tab_menu = [
 ]
 
 class Gui():
+    particles = []
+    last_time = 0
     window_img = None
+
+    def render_particles():
+        draw_list = ImGui.get_window_draw_list()
+        window_pos = ImGui.get_window_pos()
+        window_size = ImGui.get_window_size()
+        
+        if not Gui.particles:
+            for _ in range(50):
+                Gui.particles.append(Particle(window_size.x, window_size.y))
+
+        for p in Gui.particles:
+            p.update(window_size.x, window_size.y)
+            draw_pos = ImGui.ImVec2(window_pos.x + p.pos[0], window_pos.y + p.pos[1])
+            
+            draw_list.add_circle_filled(
+                draw_pos, 
+                p.size, 
+                p.color
+            )
 
     def load_assets():
         immvision.use_rgb_color_order() 
@@ -158,8 +180,8 @@ class Gui():
                         params.show_options_panel = False
                         params.can_resize = False
                         scale = 0.5
-                        width = int(444 * scale)
-                        height = int(274 * scale)
+                        width = int(440 * scale)
+                        height = int(272 * scale)
                         
                         params.image_display_size = (width, height) 
                         immvision.image(f"##{label}", Gui.window_img, params)
@@ -169,7 +191,14 @@ class Gui():
                         # Card info
                         ImGui.begin_group()
                         ImGui.text(item['display_name'])
+    
+                        ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(150, 150, 150, 255).value)
+                        ImGui.push_text_wrap_pos(ImGui.get_cursor_pos().x + 300)
+                        
                         ImGui.text("Lorem Ipsum is simply dummy text of the printing and typesetting")
+                        ImGui.pop_style_color()
+                        ImGui.pop_text_wrap_pos()
+
                         ImGui.spacing()
                         ImGui.text("version 1.1")
                         ImGui.button("DownLoad")

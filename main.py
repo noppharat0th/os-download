@@ -47,6 +47,7 @@ def gui():
     ImGui.begin("ISO Downloader", None, ImGui.WindowFlags_.no_title_bar | ImGui.WindowFlags_.no_resize) 
 
     Gui.render_screen(windows_list, linux_list)
+    Gui.render_particles()
 
     # ImGui.spacing()
     # ImGui.progress_bar(state.download_progress, ImGui.ImVec2(-1, 25), f"{state.download_progress*100:.1f}%")
