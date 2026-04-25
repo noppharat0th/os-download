@@ -239,12 +239,22 @@ class Gui():
 
                         target_x = ImGui.get_window_width() - button_width - right_padding
                         ImGui.set_cursor_pos_x(target_x)
-                        if ImGui.button("DownLoad", ImGui.ImVec2(button_width, 30)):
-                            pass
+
+                        if state.is_downloading :
+                            ImGui.begin_disabled()
+                            ImGui.button("Loading", ImGui.ImVec2(button_width, 30))
+                            ImGui.end_disabled()
+                        else:
+                            if ImGui.button("DownLoad", ImGui.ImVec2(button_width, 30)):
+                                state.current_download_id = item['id']
+                                clean_filename = f"{item['display_name'].replace(' ', '_')}.iso"
+                                threading.Thread(target=Dowloads.download_iso, args=(item['url'], clean_filename), daemon=True).start()
                         
-                        download_percent = 0.65 
-                        Gui.progress("download_id_1", download_percent)
+                        if state.is_downloading and state.current_download_id == item['id'] :
+                            download_percent = state.download_progress
+                            Gui.progress(f"dl_{item['id']}", download_percent)
                         ImGui.end_group()
+                        
 
                         
                 ImGui.end_child()

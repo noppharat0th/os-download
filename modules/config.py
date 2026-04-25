@@ -3,6 +3,7 @@ class state:
     is_downloading = False
     status_msg = "Ready"
     current_file = ""
+    current_download_id = ""
 
 class Config:
     color_background = (4, 4, 4, 255)
