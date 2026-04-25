@@ -6,5 +6,5 @@ class state:
 
 class Config:
     color_background = (4, 4, 4, 255)
-    color_secondary = (6, 6, 6, 255)
-    color_border = (50, 50, 50, 60)
+    color_secondary = (7, 7, 7, 255)
+    color_border = (50, 50, 50, 80)

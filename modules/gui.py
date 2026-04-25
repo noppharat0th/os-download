@@ -24,7 +24,7 @@ class Gui():
 
     def load_assets():
         immvision.use_rgb_color_order() 
-        img = cv2.imread("assets/linux.jpg")
+        img = cv2.imread("assets/kali.png")
         if img is not None:
             Gui.window_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         else:
@@ -142,8 +142,13 @@ class Gui():
             ImGui.spacing()
 
             for item in os_list:
-                ImGui.push_style_color(ImGui.Col_.child_bg, ImGui.ImColor(20, 20, 20, 255).value)
-                if ImGui.begin_child(f"card_{item['id']}", ImGui.ImVec2(-15, 180), ImGui.ChildFlags_.borders):
+                ImGui.push_style_var(ImGui.StyleVar_.child_rounding, 5.0)                
+                ImGui.push_style_var(ImGui.StyleVar_.window_padding, ImGui.ImVec2(25, 25))                
+                ImGui.push_style_color(ImGui.Col_.border, ImGui.ImColor(*Config.color_border).value)
+                ImGui.push_style_color(ImGui.Col_.child_bg, ImGui.ImColor(*Config.color_secondary).value)
+                if ImGui.begin_child(f"card_{item['id']}", ImGui.ImVec2(-15, 180), ImGui.ChildFlags_.borders, ImGui.WindowFlags_.no_scrollbar | ImGui.WindowFlags_.no_scroll_with_mouse):
+
+                    # Card image
                     if Gui.window_img is not None:
                         params = immvision.ImageParams()
                         params.show_image_info = False
@@ -151,10 +156,29 @@ class Gui():
                         params.show_pixel_info = False
                         params.show_options_button = False
                         params.show_options_panel = False
-                        params.image_display_size = (60, 60)
+                        params.can_resize = False
+                        scale = 0.5
+                        width = int(444 * scale)
+                        height = int(274 * scale)
+                        
+                        params.image_display_size = (width, height) 
                         immvision.image(f"##{label}", Gui.window_img, params)
+
+                        ImGui.same_line()
+
+                        # Card info
+                        ImGui.begin_group()
+                        ImGui.text(item['display_name'])
+                        ImGui.text("Lorem Ipsum is simply dummy text of the printing and typesetting")
+                        ImGui.spacing()
+                        ImGui.text("version 1.1")
+                        ImGui.button("DownLoad")
+                        ImGui.end_group()
+                        
+                        
                 ImGui.end_child()
-                ImGui.pop_style_color()
+                ImGui.pop_style_color(2)
+                ImGui.pop_style_var(2)
 
         ImGui.end_child()
         ImGui.pop_style_var(2)
