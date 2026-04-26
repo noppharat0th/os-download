@@ -1,0 +1,365 @@
+[2026/04/26 14:32:31.725] 
+##################################################################################
+############################## Ventoy2DiskX86  #############################
+##################################################################################
+[2026/04/26 14:32:31.725] Current Directory <C:\Users\toons\Desktop\github\os-download>
+[2026/04/26 14:32:31.725] Exe file path <C:\Users\toons\Desktop\github\os-download\bin\Ventoy2Disk.exe>
+[2026/04/26 14:32:31.725] Change current dir to exe <C:\Users\toons\Desktop\github\os-download\bin>
+[2026/04/26 14:32:31.725] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.745] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.762] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.778] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.788] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.806] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.822] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.839] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.846] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.862] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.884] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.904] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.925] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.939] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.959] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.977] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:31.994] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.019] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.040] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.058] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.082] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.101] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.118] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.137] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.153] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.168] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.189] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.210] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.227] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.235] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.255] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.282] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.304] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.323] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.338] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.354] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.371] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.388] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.408] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.428] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.443] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.469] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.488] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.506] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.527] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.544] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.561] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.577] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.595] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:32:32.612] ####### File <boot\boot.img> not found, did you download it from official website ? ######
+[2026/04/26 14:42:42.389] 
+##################################################################################
+############################## Ventoy2DiskX86  #############################
+##################################################################################
+[2026/04/26 14:42:42.389] Current Directory <C:\Users\toons\Desktop\github\os-download>
+[2026/04/26 14:42:42.389] Exe file path <C:\Users\toons\Desktop\github\os-download\bin\Ventoy2Disk.exe>
+[2026/04/26 14:42:42.389] Change current dir to exe <C:\Users\toons\Desktop\github\os-download\bin>
+[2026/04/26 14:42:42.389] Current directory:<C:\Users\toons\Desktop\github\os-download\bin>
+[2026/04/26 14:42:42.411] ######### Current Ventoy Version: Ventoy2DiskX86 1.1.06 ########
+[2026/04/26 14:42:42.438] id=22276/2588
+[2026/04/26 14:42:42.450] PPath:<C:\Users\toons\AppData\Local\Programs\Python\Python312\python.exe>
+[2026/04/26 14:42:42.470] PSize:<103192 100KB>
+[2026/04/26 14:42:42.490] Lunch main process 0
+[2026/04/26 14:42:42.514] CmdLine:<-i -f G:\>
+[2026/04/26 14:42:42.536] Control Flag: 0 1 1
+[2026/04/26 14:42:42.565] Windows Version: <<Windows 11 Home Single Language, 64-bit (Build 26200.8246)>>
+[2026/04/26 14:42:42.586] 
+===================== Enum All PhyDrives =====================
+[2026/04/26 14:42:42.609] RegOpenKeyExA <SYSTEM\CurrentControlSet\Services\disk\Enum> Ret:0
+[2026/04/26 14:42:42.628] RegQueryValueExA <Count> ret:0  Size:4 Value:3
+[2026/04/26 14:42:42.652] GetPhysicalDriveCount: 3
+[2026/04/26 14:42:42.678] Logical Drives: 0x4c
+[2026/04/26 14:42:42.703] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:227540992 ExtentLength:510244421632
+[2026/04/26 14:42:42.726] C --> 0
+[2026/04/26 14:42:42.746] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:16777216 ExtentLength:1000186314752
+[2026/04/26 14:42:42.769] D --> 1
+[2026/04/26 14:42:42.796] LogicalDrive:\\.\G: PhyDrive:2 Num:1 Offset:16384 ExtentLength:268435439616
+[2026/04/26 14:42:42.809] G --> 2
+[2026/04/26 14:42:42.833] Create file Handle:00000140 \\.\PhysicalDrive0 status:0
+[2026/04/26 14:42:42.857] PHYSICALDRIVE0 size 512110190592 bytes
+[2026/04/26 14:42:42.881] Create file Handle:00000140 \\.\PhysicalDrive1 status:0
+[2026/04/26 14:42:42.949] PHYSICALDRIVE1 size 1000204886016 bytes
+[2026/04/26 14:42:42.956] Create file Handle:00000140 \\.\PhysicalDrive2 status:0
+[2026/04/26 14:42:42.976] PHYSICALDRIVE2 size 268435456000 bytes
+[2026/04/26 14:42:42.995] DeviceIoControl3 error:1 dwBytes:123
+[2026/04/26 14:42:43.017] PhyDrv:0 BusType:Nvme Removable:0 Size:512GB(512110190592) Sector:512/4096 Name: WD PC SN740 SDDPNQD-512G-1002
+[2026/04/26 14:42:43.043] PhyDrv:1 BusType:Nvme Removable:0 Size:1024GB(1000204886016) Sector:512/4096 Name: WDS100T3X0C-00SJG0
+[2026/04/26 14:42:43.065] PhyDrv:2 BusType:USB  Removable:1 Size:250GB(268435456000) Sector:0/0 Name:VendorCo ProductCode
+[2026/04/26 14:42:43.084] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:227540992 ExtentLength:510244421632
+[2026/04/26 14:42:43.106] Logical Drive:C  ===> PhyDrive:0
+[2026/04/26 14:42:43.127] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:16777216 ExtentLength:1000186314752
+[2026/04/26 14:42:43.148] Logical Drive:D  ===> PhyDrive:1
+[2026/04/26 14:42:43.173] LogicalDrive:\\.\G: PhyDrive:2 Num:1 Offset:16384 ExtentLength:268435439616
+[2026/04/26 14:42:43.196] Logical Drive:G  ===> PhyDrive:2
+[2026/04/26 14:42:43.223] Create file Handle:00000140 \\.\PhysicalDrive2 status:0
+[2026/04/26 14:42:43.246] Read MBR Ret:1 Size:512 code:183
+[2026/04/26 14:42:43.266] =========== Disk2 MBR Partition 1 ============
+[2026/04/26 14:42:43.289] PartTbl.Active = 0x80
+[2026/04/26 14:42:43.314] PartTbl.FsFlag = 0x7
+[2026/04/26 14:42:43.337] PartTbl.StartSectorId = 32
+[2026/04/26 14:42:43.362] PartTbl.SectorCount = 524287968
+[2026/04/26 14:42:43.385] PartTbl.StartHead = 1
+[2026/04/26 14:42:43.410] PartTbl.StartSector = 1
+[2026/04/26 14:42:43.429] PartTbl.StartCylinder = 0
+[2026/04/26 14:42:43.446] PartTbl.EndHead = 254
+[2026/04/26 14:42:43.466] PartTbl.EndSector = 63
+[2026/04/26 14:42:43.490] PartTbl.EndCylinder = 1023
+[2026/04/26 14:42:43.511] =========== Disk2 MBR Partition 2 ============
+[2026/04/26 14:42:43.535] PartTbl.Active = 0x0
+[2026/04/26 14:42:43.560] PartTbl.FsFlag = 0x0
+[2026/04/26 14:42:43.585] PartTbl.StartSectorId = 0
+[2026/04/26 14:42:43.607] PartTbl.SectorCount = 0
+[2026/04/26 14:42:43.630] PartTbl.StartHead = 0
+[2026/04/26 14:42:43.652] PartTbl.StartSector = 0
+[2026/04/26 14:42:43.676] PartTbl.StartCylinder = 0
+[2026/04/26 14:42:43.697] PartTbl.EndHead = 0
+[2026/04/26 14:42:43.719] PartTbl.EndSector = 0
+[2026/04/26 14:42:43.744] PartTbl.EndCylinder = 0
+[2026/04/26 14:42:43.767] =========== Disk2 MBR Partition 3 ============
+[2026/04/26 14:42:43.793] PartTbl.Active = 0x0
+[2026/04/26 14:42:43.817] PartTbl.FsFlag = 0x0
+[2026/04/26 14:42:43.837] PartTbl.StartSectorId = 0
+[2026/04/26 14:42:43.861] PartTbl.SectorCount = 0
+[2026/04/26 14:42:43.885] PartTbl.StartHead = 0
+[2026/04/26 14:42:43.910] PartTbl.StartSector = 0
+[2026/04/26 14:42:43.930] PartTbl.StartCylinder = 0
+[2026/04/26 14:42:43.955] PartTbl.EndHead = 0
+[2026/04/26 14:42:43.978] PartTbl.EndSector = 0
+[2026/04/26 14:42:43.995] PartTbl.EndCylinder = 0
+[2026/04/26 14:42:44.016] =========== Disk2 MBR Partition 4 ============
+[2026/04/26 14:42:44.036] PartTbl.Active = 0x0
+[2026/04/26 14:42:44.052] PartTbl.FsFlag = 0x0
+[2026/04/26 14:42:44.076] PartTbl.StartSectorId = 0
+[2026/04/26 14:42:44.100] PartTbl.SectorCount = 0
+[2026/04/26 14:42:44.123] PartTbl.StartHead = 0
+[2026/04/26 14:42:44.146] PartTbl.StartSector = 0
+[2026/04/26 14:42:44.169] PartTbl.StartCylinder = 0
+[2026/04/26 14:42:44.193] PartTbl.EndHead = 0
+[2026/04/26 14:42:44.214] PartTbl.EndSector = 0
+[2026/04/26 14:42:44.238] PartTbl.EndCylinder = 0
+[2026/04/26 14:42:44.257] Part1 not match 32
+[2026/04/26 14:42:44.280] < WD PC SN740 SDDPNQD-512G-1002> is filtered for not USB type.
+[2026/04/26 14:42:44.304] < WDS100T3X0C-00SJG0> is filtered for not USB type.
+[2026/04/26 14:42:44.400] Load languages from json file ...
+[2026/04/26 14:42:44.409] language json file len:276765 json parse:0
+[2026/04/26 14:42:44.411] Total 51 languages ...
+[2026/04/26 14:42:44.483] Not ventoy disk, set secure boot option
+[2026/04/26 14:42:44.499] Courier New font <C:\WINDOWS\Fonts\couri.ttf> exist OK.
+[2026/04/26 14:42:44.500] system_dir=<C:\WINDOWS\system32>
+[2026/04/26 14:42:44.507] sysnative_dir=<C:\WINDOWS\Sysnative>
+[2026/04/26 14:42:44.518] LoadLibrary shell32.dll.mui SUCCESS
+[2026/04/26 14:42:44.526] SetAlertPromptHook SUCCESS
+[2026/04/26 14:50:13.990] 
+##################################################################################
+############################## Ventoy2DiskX86  #############################
+##################################################################################
+[2026/04/26 14:50:13.990] Current Directory <C:\Users\toons\Desktop\github\os-download\bin>
+[2026/04/26 14:50:13.990] Exe file path <C:\Users\toons\Desktop\github\os-download\bin\Ventoy2Disk.exe>
+[2026/04/26 14:50:13.990] Current directory check OK.
+[2026/04/26 14:50:13.991] Current directory:<C:\Users\toons\Desktop\github\os-download\bin>
+[2026/04/26 14:50:14.028] ######### Current Ventoy Version: Ventoy2DiskX86 1.1.06 ########
+[2026/04/26 14:50:14.065] id=26792/32084
+[2026/04/26 14:50:14.082] PPath:<C:\Users\toons\AppData\Local\Programs\Python\Python312\python.exe>
+[2026/04/26 14:50:14.106] PSize:<103192 100KB>
+[2026/04/26 14:50:14.134] Lunch main process 0
+[2026/04/26 14:50:14.160] CmdLine:<-i -f \\.\PhysicalDriveG:\>
+[2026/04/26 14:50:14.190] Control Flag: 0 1 1
+[2026/04/26 14:50:14.217] Set Ventoy FS ClusterSize 0
+[2026/04/26 14:50:14.242] Windows Version: <<Windows 11 Home Single Language, 64-bit (Build 26200.8246)>>
+[2026/04/26 14:50:14.268] 
+===================== Enum All PhyDrives =====================
+[2026/04/26 14:50:14.296] RegOpenKeyExA <SYSTEM\CurrentControlSet\Services\disk\Enum> Ret:0
+[2026/04/26 14:50:14.319] RegQueryValueExA <Count> ret:0  Size:4 Value:3
+[2026/04/26 14:50:14.344] GetPhysicalDriveCount: 3
+[2026/04/26 14:50:14.364] Logical Drives: 0x4c
+[2026/04/26 14:50:14.388] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:227540992 ExtentLength:510244421632
+[2026/04/26 14:50:14.410] C --> 0
+[2026/04/26 14:50:14.433] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:16777216 ExtentLength:1000186314752
+[2026/04/26 14:50:14.456] D --> 1
+[2026/04/26 14:50:14.482] LogicalDrive:\\.\G: PhyDrive:2 Num:1 Offset:16384 ExtentLength:268435439616
+[2026/04/26 14:50:14.504] G --> 2
+[2026/04/26 14:50:14.530] Create file Handle:0000013C \\.\PhysicalDrive0 status:0
+[2026/04/26 14:50:14.554] PHYSICALDRIVE0 size 512110190592 bytes
+[2026/04/26 14:50:14.577] Create file Handle:00000140 \\.\PhysicalDrive1 status:0
+[2026/04/26 14:50:14.641] PHYSICALDRIVE1 size 1000204886016 bytes
+[2026/04/26 14:50:14.646] Create file Handle:00000144 \\.\PhysicalDrive2 status:0
+[2026/04/26 14:50:14.669] PHYSICALDRIVE2 size 268435456000 bytes
+[2026/04/26 14:50:14.694] DeviceIoControl3 error:1 dwBytes:123
+[2026/04/26 14:50:14.718] PhyDrv:0 BusType:Nvme Removable:0 Size:512GB(512110190592) Sector:512/4096 Name: WD PC SN740 SDDPNQD-512G-1002
+[2026/04/26 14:50:14.743] PhyDrv:1 BusType:Nvme Removable:0 Size:1024GB(1000204886016) Sector:512/4096 Name: WDS100T3X0C-00SJG0
+[2026/04/26 14:50:14.770] PhyDrv:2 BusType:USB  Removable:1 Size:250GB(268435456000) Sector:0/0 Name:VendorCo ProductCode
+[2026/04/26 14:50:14.794] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:227540992 ExtentLength:510244421632
+[2026/04/26 14:50:14.820] Logical Drive:C  ===> PhyDrive:0
+[2026/04/26 14:50:14.843] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:16777216 ExtentLength:1000186314752
+[2026/04/26 14:50:14.865] Logical Drive:D  ===> PhyDrive:1
+[2026/04/26 14:50:14.890] LogicalDrive:\\.\G: PhyDrive:2 Num:1 Offset:16384 ExtentLength:268435439616
+[2026/04/26 14:50:14.909] Logical Drive:G  ===> PhyDrive:2
+[2026/04/26 14:50:14.937] Create file Handle:00000134 \\.\PhysicalDrive2 status:0
+[2026/04/26 14:50:14.960] Read MBR Ret:1 Size:512 code:183
+[2026/04/26 14:50:14.983] =========== Disk2 MBR Partition 1 ============
+[2026/04/26 14:50:15.005] PartTbl.Active = 0x80
+[2026/04/26 14:50:15.030] PartTbl.FsFlag = 0x7
+[2026/04/26 14:50:15.057] PartTbl.StartSectorId = 32
+[2026/04/26 14:50:15.079] PartTbl.SectorCount = 524287968
+[2026/04/26 14:50:15.104] PartTbl.StartHead = 1
+[2026/04/26 14:50:15.129] PartTbl.StartSector = 1
+[2026/04/26 14:50:15.157] PartTbl.StartCylinder = 0
+[2026/04/26 14:50:15.182] PartTbl.EndHead = 254
+[2026/04/26 14:50:15.206] PartTbl.EndSector = 63
+[2026/04/26 14:50:15.227] PartTbl.EndCylinder = 1023
+[2026/04/26 14:50:15.252] =========== Disk2 MBR Partition 2 ============
+[2026/04/26 14:50:15.273] PartTbl.Active = 0x0
+[2026/04/26 14:50:15.295] PartTbl.FsFlag = 0x0
+[2026/04/26 14:50:15.318] PartTbl.StartSectorId = 0
+[2026/04/26 14:50:15.338] PartTbl.SectorCount = 0
+[2026/04/26 14:50:15.364] PartTbl.StartHead = 0
+[2026/04/26 14:50:15.389] PartTbl.StartSector = 0
+[2026/04/26 14:50:15.413] PartTbl.StartCylinder = 0
+[2026/04/26 14:50:15.436] PartTbl.EndHead = 0
+[2026/04/26 14:50:15.457] PartTbl.EndSector = 0
+[2026/04/26 14:50:15.481] PartTbl.EndCylinder = 0
+[2026/04/26 14:50:15.504] =========== Disk2 MBR Partition 3 ============
+[2026/04/26 14:50:15.529] PartTbl.Active = 0x0
+[2026/04/26 14:50:15.554] PartTbl.FsFlag = 0x0
+[2026/04/26 14:50:15.578] PartTbl.StartSectorId = 0
+[2026/04/26 14:50:15.599] PartTbl.SectorCount = 0
+[2026/04/26 14:50:15.623] PartTbl.StartHead = 0
+[2026/04/26 14:50:15.645] PartTbl.StartSector = 0
+[2026/04/26 14:50:15.665] PartTbl.StartCylinder = 0
+[2026/04/26 14:50:15.689] PartTbl.EndHead = 0
+[2026/04/26 14:50:15.712] PartTbl.EndSector = 0
+[2026/04/26 14:50:15.732] PartTbl.EndCylinder = 0
+[2026/04/26 14:50:15.753] =========== Disk2 MBR Partition 4 ============
+[2026/04/26 14:50:15.774] PartTbl.Active = 0x0
+[2026/04/26 14:50:15.791] PartTbl.FsFlag = 0x0
+[2026/04/26 14:50:15.815] PartTbl.StartSectorId = 0
+[2026/04/26 14:50:15.840] PartTbl.SectorCount = 0
+[2026/04/26 14:50:15.862] PartTbl.StartHead = 0
+[2026/04/26 14:50:15.884] PartTbl.StartSector = 0
+[2026/04/26 14:50:15.910] PartTbl.StartCylinder = 0
+[2026/04/26 14:50:15.933] PartTbl.EndHead = 0
+[2026/04/26 14:50:15.956] PartTbl.EndSector = 0
+[2026/04/26 14:50:15.978] PartTbl.EndCylinder = 0
+[2026/04/26 14:50:16.000] Part1 not match 32
+[2026/04/26 14:50:16.015] < WD PC SN740 SDDPNQD-512G-1002> is filtered for not USB type.
+[2026/04/26 14:50:16.031] < WDS100T3X0C-00SJG0> is filtered for not USB type.
+[2026/04/26 14:50:16.107] Load languages from json file ...
+[2026/04/26 14:50:16.108] language json file len:276765 json parse:0
+[2026/04/26 14:50:16.121] Total 51 languages ...
+[2026/04/26 14:50:16.165] Not ventoy disk, set secure boot option
+[2026/04/26 14:50:16.171] Courier New font <C:\WINDOWS\Fonts\couri.ttf> exist OK.
+[2026/04/26 14:50:16.179] system_dir=<C:\WINDOWS\system32>
+[2026/04/26 14:50:16.195] sysnative_dir=<C:\WINDOWS\Sysnative>
+[2026/04/26 14:50:16.214] LoadLibrary shell32.dll.mui SUCCESS
+[2026/04/26 14:50:16.237] SetAlertPromptHook SUCCESS
+[2026/04/26 14:56:14.017] 
+##################################################################################
+############################## Ventoy2DiskX86  #############################
+##################################################################################
+[2026/04/26 14:56:14.017] Current Directory <C:\Users\toons\Desktop\github\os-download\bin>
+[2026/04/26 14:56:14.017] Exe file path <C:\Users\toons\Desktop\github\os-download\bin\Ventoy2Disk.exe>
+[2026/04/26 14:56:14.017] Current directory check OK.
+[2026/04/26 14:56:14.017] Current directory:<C:\Users\toons\Desktop\github\os-download\bin>
+[2026/04/26 14:56:14.052] ######### Current Ventoy Version: Ventoy2DiskX86 1.1.06 ########
+[2026/04/26 14:56:14.084] id=28432/23804
+[2026/04/26 14:56:14.097] PPath:<C:\Users\toons\AppData\Local\Programs\Python\Python312\python.exe>
+[2026/04/26 14:56:14.122] PSize:<103192 100KB>
+[2026/04/26 14:56:14.148] Lunch main process 0
+[2026/04/26 14:56:14.174] CmdLine:<-i -f G:\>
+[2026/04/26 14:56:14.197] Control Flag: 0 1 1
+[2026/04/26 14:56:14.225] Set Ventoy FS ClusterSize 0
+[2026/04/26 14:56:14.253] Windows Version: <<Windows 11 Home Single Language, 64-bit (Build 26200.8246)>>
+[2026/04/26 14:56:14.279] 
+===================== Enum All PhyDrives =====================
+[2026/04/26 14:56:14.307] RegOpenKeyExA <SYSTEM\CurrentControlSet\Services\disk\Enum> Ret:0
+[2026/04/26 14:56:14.334] RegQueryValueExA <Count> ret:0  Size:4 Value:3
+[2026/04/26 14:56:14.358] GetPhysicalDriveCount: 3
+[2026/04/26 14:56:14.384] Logical Drives: 0x4c
+[2026/04/26 14:56:14.410] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:227540992 ExtentLength:510244421632
+[2026/04/26 14:56:14.436] C --> 0
+[2026/04/26 14:56:14.458] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:16777216 ExtentLength:1000186314752
+[2026/04/26 14:56:14.484] D --> 1
+[2026/04/26 14:56:14.515] LogicalDrive:\\.\G: PhyDrive:2 Num:1 Offset:16384 ExtentLength:268435439616
+[2026/04/26 14:56:14.536] G --> 2
+[2026/04/26 14:56:14.564] Create file Handle:00000130 \\.\PhysicalDrive0 status:0
+[2026/04/26 14:56:14.593] PHYSICALDRIVE0 size 512110190592 bytes
+[2026/04/26 14:56:14.619] Create file Handle:00000134 \\.\PhysicalDrive1 status:0
+[2026/04/26 14:56:14.686] PHYSICALDRIVE1 size 1000204886016 bytes
+[2026/04/26 14:56:14.689] Create file Handle:00000138 \\.\PhysicalDrive2 status:0
+[2026/04/26 14:56:14.713] PHYSICALDRIVE2 size 268435456000 bytes
+[2026/04/26 14:56:14.739] DeviceIoControl3 error:1 dwBytes:123
+[2026/04/26 14:56:14.761] PhyDrv:0 BusType:Nvme Removable:0 Size:512GB(512110190592) Sector:512/4096 Name: WD PC SN740 SDDPNQD-512G-1002
+[2026/04/26 14:56:14.785] PhyDrv:1 BusType:Nvme Removable:0 Size:1024GB(1000204886016) Sector:512/4096 Name: WDS100T3X0C-00SJG0
+[2026/04/26 14:56:14.807] PhyDrv:2 BusType:USB  Removable:1 Size:250GB(268435456000) Sector:0/0 Name:VendorCo ProductCode
+[2026/04/26 14:56:14.833] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:227540992 ExtentLength:510244421632
+[2026/04/26 14:56:14.860] Logical Drive:C  ===> PhyDrive:0
+[2026/04/26 14:56:14.887] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:16777216 ExtentLength:1000186314752
+[2026/04/26 14:56:14.912] Logical Drive:D  ===> PhyDrive:1
+[2026/04/26 14:56:14.941] LogicalDrive:\\.\G: PhyDrive:2 Num:1 Offset:16384 ExtentLength:268435439616
+[2026/04/26 14:56:14.963] Logical Drive:G  ===> PhyDrive:2
+[2026/04/26 14:56:14.990] Create file Handle:00000130 \\.\PhysicalDrive2 status:0
+[2026/04/26 14:56:15.016] Read MBR Ret:1 Size:512 code:183
+[2026/04/26 14:56:15.041] =========== Disk2 MBR Partition 1 ============
+[2026/04/26 14:56:15.063] PartTbl.Active = 0x80
+[2026/04/26 14:56:15.086] PartTbl.FsFlag = 0x7
+[2026/04/26 14:56:15.113] PartTbl.StartSectorId = 32
+[2026/04/26 14:56:15.138] PartTbl.SectorCount = 524287968
+[2026/04/26 14:56:15.165] PartTbl.StartHead = 1
+[2026/04/26 14:56:15.191] PartTbl.StartSector = 1
+[2026/04/26 14:56:15.218] PartTbl.StartCylinder = 0
+[2026/04/26 14:56:15.243] PartTbl.EndHead = 254
+[2026/04/26 14:56:15.266] PartTbl.EndSector = 63
+[2026/04/26 14:56:15.293] PartTbl.EndCylinder = 1023
+[2026/04/26 14:56:15.314] =========== Disk2 MBR Partition 2 ============
+[2026/04/26 14:56:15.339] PartTbl.Active = 0x0
+[2026/04/26 14:56:15.361] PartTbl.FsFlag = 0x0
+[2026/04/26 14:56:15.387] PartTbl.StartSectorId = 0
+[2026/04/26 14:56:15.410] PartTbl.SectorCount = 0
+[2026/04/26 14:56:15.433] PartTbl.StartHead = 0
+[2026/04/26 14:56:15.458] PartTbl.StartSector = 0
+[2026/04/26 14:56:15.482] PartTbl.StartCylinder = 0
+[2026/04/26 14:56:15.505] PartTbl.EndHead = 0
+[2026/04/26 14:56:15.527] PartTbl.EndSector = 0
+[2026/04/26 14:56:15.549] PartTbl.EndCylinder = 0
+[2026/04/26 14:56:15.571] =========== Disk2 MBR Partition 3 ============
+[2026/04/26 14:56:15.594] PartTbl.Active = 0x0
+[2026/04/26 14:56:15.618] PartTbl.FsFlag = 0x0
+[2026/04/26 14:56:15.637] PartTbl.StartSectorId = 0
+[2026/04/26 14:56:15.658] PartTbl.SectorCount = 0
+[2026/04/26 14:56:15.683] PartTbl.StartHead = 0
+[2026/04/26 14:56:15.706] PartTbl.StartSector = 0
+[2026/04/26 14:56:15.730] PartTbl.StartCylinder = 0
+[2026/04/26 14:56:15.752] PartTbl.EndHead = 0
+[2026/04/26 14:56:15.777] PartTbl.EndSector = 0
+[2026/04/26 14:56:15.801] PartTbl.EndCylinder = 0
+[2026/04/26 14:56:15.825] =========== Disk2 MBR Partition 4 ============
+[2026/04/26 14:56:15.844] PartTbl.Active = 0x0
+[2026/04/26 14:56:15.869] PartTbl.FsFlag = 0x0
+[2026/04/26 14:56:15.894] PartTbl.StartSectorId = 0
+[2026/04/26 14:56:15.918] PartTbl.SectorCount = 0
+[2026/04/26 14:56:15.945] PartTbl.StartHead = 0
+[2026/04/26 14:56:15.969] PartTbl.StartSector = 0
+[2026/04/26 14:56:15.989] PartTbl.StartCylinder = 0
+[2026/04/26 14:56:16.011] PartTbl.EndHead = 0
+[2026/04/26 14:56:16.035] PartTbl.EndSector = 0
+[2026/04/26 14:56:16.057] PartTbl.EndCylinder = 0
+[2026/04/26 14:56:16.079] Part1 not match 32
+[2026/04/26 14:56:16.101] < WD PC SN740 SDDPNQD-512G-1002> is filtered for not USB type.
+[2026/04/26 14:56:16.121] < WDS100T3X0C-00SJG0> is filtered for not USB type.
+[2026/04/26 14:56:16.180] Load languages from json file ...
+[2026/04/26 14:56:16.181] language json file len:276765 json parse:0
+[2026/04/26 14:56:16.203] Total 51 languages ...
+[2026/04/26 14:56:16.252] Not ventoy disk, set secure boot option
+[2026/04/26 14:56:16.258] Courier New font <C:\WINDOWS\Fonts\couri.ttf> exist OK.
+[2026/04/26 14:56:16.260] system_dir=<C:\WINDOWS\system32>
+[2026/04/26 14:56:16.266] sysnative_dir=<C:\WINDOWS\Sysnative>
+[2026/04/26 14:56:16.274] LoadLibrary shell32.dll.mui SUCCESS
+[2026/04/26 14:56:16.281] SetAlertPromptHook SUCCESS

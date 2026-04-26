@@ -2,28 +2,28 @@
     "window": [
         {
             "id": "win10_official",
-            "display_name": "Windows 10 (Microsoft Server)",
+            "display_name": "Windows 10",
             "url": "https://cdn.as212934.net/windows/Win10_22H2_English_x64v1.iso",
             "img": "assets/window-10.png"
         }
     ],
     "linux": [
         {
-            "id": "arch_linuux",
-            "display_name": "Arch Linux (Official)",
-            "url": "",
+            "id": "arch_linux",
+            "display_name": "Arch Linux",
+            "url": "https://geo.mirror.pkgbuild.com/iso/latest/archlinux-x86_64.iso",
             "img": "assets/arch-linux.png"
         },
         {
             "id": "ubuntu_24_lts",
-            "display_name": "Ubuntu 24.04.1 (Official)",
-            "url": "",
+            "display_name": "Ubuntu 24.04.1",
+            "url": "https://releases.ubuntu.com/24.04.1/ubuntu-24.04.1-desktop-amd64.iso",
             "img": "assets/ubuntu-linux.png"
         },
         {
             "id": "kali_latest",
-            "display_name": "Kali Linux (Official)",
-            "url": "",
+            "display_name": "Kali Linux",
+            "url": "https://cdimage.kali.org/kali-2026.1/kali-linux-2026.1-installer-amd64.iso",
             "img": "assets/kali-linux.png"
         }
     ]
