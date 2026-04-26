@@ -1,12 +1,14 @@
 
+from gettext import install
 import time
 
 import cv2
 from glm import pos
 from imgui_bundle import ImColor, imgui as ImGui, icons_fontawesome_6, immvision
 import threading
-from modules.config import state, Config, format_time
+from modules.config import state, Config, format_time, resource_path
 from modules.downloads import Dowloads
+from modules.ventoy import Ventoy
 from modules.overlay import Particle
 
 tab_bar_width = 90
@@ -30,6 +32,7 @@ class Gui():
     last_time = time.time()
     os_images = {}
     logo = None
+    selected_usb_index = 0
 
     # overlay
     def render_particles():
@@ -51,18 +54,22 @@ class Gui():
                 p.color
             )
 
-    # load image from assets
+    @staticmethod
     def load_assets(windows_list, linux_list):
         immvision.use_rgb_color_order() 
-        # img = cv2.imread("assets/arch-linux.png")
-        # logo = cv2.imread("assets/logo.png")
 
         all_os = windows_list + linux_list
 
         for os in all_os:
             img_path = os.get('img', 'assets/linux.jpg')
-            img = cv2.imread(img_path)
-            Gui.os_images[os['id']] = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            img = cv2.imread(resource_path(img_path))
+            
+            # Additional fallback check if OpenCV fails to read the first path
+            if img is None:
+                img = cv2.imread(resource_path('assets/linux.jpg'))
+                
+            if img is not None:
+                Gui.os_images[os['id']] = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     # render screen main
     def render_screen(windows_list, linux_list):
@@ -118,25 +125,12 @@ class Gui():
         if Gui.current_page == "Home":
             Gui.card_show_os("Window", windows_list)
             Gui.card_show_os("Linux", linux_list)
+        elif Gui.current_page == "Settings":
+            Gui.render_ventoy_page()
 
         ImGui.end_group()
         ImGui.pop_style_var()
     
-    # def os_list(label, os_list):
-    #     ImGui.text_disabled(label)
-    #     for item in os_list:
-    #         clean_filename = f"{item['display_name'].replace(' ', '_')}.iso"
-    #         ImGui.text(item['display_name'])
-    #         disble_button = state.is_downloading
-
-    #         if disble_button:
-    #             ImGui.begin_disabled()
-
-    #         if ImGui.button(f"Download##{item['id']}", ImGui.ImVec2(-1, 45)):
-    #             threading.Thread(target=Dowloads.download_iso, args=(item['url'], clean_filename), daemon=True).start()
-                
-    #         if disble_button:
-    #             ImGui.end_disabled()
         
     def draw_tab_menu(icon, label_id, is_active=False):
         btn_width = 60
@@ -365,3 +359,252 @@ class Gui():
         ImGui.pop_style_color()
         
         ImGui.end_group()
+
+    def render_ventoy_page():
+        content_avail = ImGui.get_content_region_avail()
+
+        ImGui.push_style_var(ImGui.StyleVar_.window_padding, ImGui.ImVec2(20, 20))
+        ImGui.push_style_var(ImGui.StyleVar_.item_spacing, ImGui.ImVec2(10, 10))
+        ImGui.push_style_color(ImGui.Col_.child_bg, ImGui.ImColor(0, 0, 0, 0).value)
+        ImGui.push_style_color(ImGui.Col_.border, ImGui.ImColor(*Config.color_border).value)
+
+        if ImGui.begin_child("ventoy_page", ImGui.ImVec2(content_avail.x - 20, content_avail.y - 10), ImGui.ChildFlags_.borders):
+
+            # ── Title ──
+            Gui.title_os("Ventoy Installer", "Install Ventoy to USB Drive")
+            ImGui.spacing()
+            ImGui.spacing()
+
+            # ── USB Drive Selection Section ──
+            Gui._section_header(icons_fontawesome_6.ICON_FA_DIAMOND, "Select USB Drive")
+            ImGui.spacing()
+
+            # Refresh USB list if empty
+            if not state.ventoy_usb_list:
+                Ventoy.refresh_usb_list()
+
+            # Build items string for combo
+            usb_labels = [usb["label"] for usb in state.ventoy_usb_list]
+            combo_items = "\0".join(usb_labels) + "\0" if usb_labels else "No USB Found\0"
+
+            ImGui.set_next_item_width(ImGui.get_content_region_avail().x - 120)
+            ImGui.push_style_color(ImGui.Col_.frame_bg, ImGui.ImColor(20, 20, 25, 255).value)
+            ImGui.push_style_color(ImGui.Col_.frame_bg_hovered, ImGui.ImColor(30, 30, 40, 255).value)
+            ImGui.push_style_color(ImGui.Col_.popup_bg, ImGui.ImColor(15, 15, 20, 255).value)
+            changed, state.ventoy_selected_usb = ImGui.combo(
+                "##usb_select",
+                state.ventoy_selected_usb,
+                combo_items
+            )
+            ImGui.pop_style_color(3)
+
+            ImGui.same_line()
+
+            # Refresh button
+            ImGui.push_style_color(ImGui.Col_.button, ImGui.ImColor(30, 30, 40, 255).value)
+            ImGui.push_style_color(ImGui.Col_.button_hovered, ImGui.ImColor(45, 45, 55, 255).value)
+            ImGui.push_style_color(ImGui.Col_.button_active, ImGui.ImColor(55, 55, 65, 255).value)
+            if ImGui.button(f"{icons_fontawesome_6.ICON_FA_ARROWS_ROTATE}  Refresh##refresh_usb", ImGui.ImVec2(105, 0)):
+                Ventoy.refresh_usb_list()
+            ImGui.pop_style_color(3)
+
+            ImGui.spacing()
+            ImGui.separator()
+            ImGui.spacing()
+
+            # ── Options Section ──
+            Gui._section_header(icons_fontawesome_6.ICON_FA_SLIDERS, "Installation Options")
+            ImGui.spacing()
+
+            # Mode (Install / Update)
+            ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(180, 180, 180, 255).value)
+            ImGui.text("Mode")
+            ImGui.pop_style_color()
+            ImGui.same_line(160)
+            ImGui.push_style_color(ImGui.Col_.frame_bg, ImGui.ImColor(20, 20, 25, 255).value)
+            ImGui.push_style_color(ImGui.Col_.check_mark, ImGui.ImColor(*Config.color_primary).value)
+            if ImGui.radio_button("Install##mode", state.ventoy_mode == 0):
+                state.ventoy_mode = 0
+            ImGui.same_line()
+            if ImGui.radio_button("Update##mode", state.ventoy_mode == 1):
+                state.ventoy_mode = 1
+            ImGui.pop_style_color(2)
+
+            ImGui.spacing()
+
+            # Partition style
+            ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(180, 180, 180, 255).value)
+            ImGui.text("Partition Style")
+            ImGui.pop_style_color()
+            ImGui.same_line(160)
+            ImGui.push_style_color(ImGui.Col_.frame_bg, ImGui.ImColor(20, 20, 25, 255).value)
+            ImGui.push_style_color(ImGui.Col_.check_mark, ImGui.ImColor(*Config.color_primary).value)
+            if ImGui.radio_button("MBR##part", state.ventoy_partition_style == 0):
+                state.ventoy_partition_style = 0
+            ImGui.same_line()
+            if ImGui.radio_button("GPT##part", state.ventoy_partition_style == 1):
+                state.ventoy_partition_style = 1
+            ImGui.pop_style_color(2)
+
+            ImGui.spacing()
+
+            # File System
+            ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(180, 180, 180, 255).value)
+            ImGui.text("File System")
+            ImGui.pop_style_color()
+            ImGui.same_line(160)
+            ImGui.set_next_item_width(200)
+            ImGui.push_style_color(ImGui.Col_.frame_bg, ImGui.ImColor(20, 20, 25, 255).value)
+            ImGui.push_style_color(ImGui.Col_.frame_bg_hovered, ImGui.ImColor(30, 30, 40, 255).value)
+            ImGui.push_style_color(ImGui.Col_.popup_bg, ImGui.ImColor(15, 15, 20, 255).value)
+            fs_items = "exFAT\0NTFS\0FAT32\0"
+            _, state.ventoy_fs = ImGui.combo("##fs_select", state.ventoy_fs, fs_items)
+            ImGui.pop_style_color(3)
+
+            ImGui.spacing()
+
+            # Secure Boot
+            ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(180, 180, 180, 255).value)
+            ImGui.text("Secure Boot")
+            ImGui.pop_style_color()
+            ImGui.same_line(160)
+            ImGui.push_style_color(ImGui.Col_.check_mark, ImGui.ImColor(*Config.color_primary).value)
+            ImGui.push_style_color(ImGui.Col_.frame_bg, ImGui.ImColor(20, 20, 25, 255).value)
+            _, state.ventoy_secure_boot = ImGui.checkbox("Enable##secboot", state.ventoy_secure_boot)
+            ImGui.pop_style_color(2)
+
+            ImGui.spacing()
+            ImGui.separator()
+            ImGui.spacing()
+
+            # ── Install Button ──
+            if state.ventoy_installing:
+                # Show progress
+                Gui._section_header(icons_fontawesome_6.ICON_FA_SPINNER, "Installing...")
+                ImGui.spacing()
+
+                percent_text = f"{state.ventoy_progress * 100:.0f}%"
+                ImGui.text(percent_text)
+                Gui.progress("ventoy_install", state.ventoy_progress)
+
+            elif state.ventoy_status == "Success":
+                # Success state
+                ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(0, 220, 100, 255).value)
+                ImGui.text(f"{icons_fontawesome_6.ICON_FA_CIRCLE_CHECK}  Ventoy installed successfully!")
+                ImGui.pop_style_color()
+
+                ImGui.spacing()
+                ImGui.push_style_color(ImGui.Col_.button, ImGui.ImColor(30, 30, 40, 255).value)
+                ImGui.push_style_color(ImGui.Col_.button_hovered, ImGui.ImColor(45, 45, 55, 255).value)
+                if ImGui.button("Install Again##reset", ImGui.ImVec2(150, 35)):
+                    state.ventoy_status = "Ready"
+                    state.ventoy_progress = 0.0
+                ImGui.pop_style_color(2)
+
+            elif state.ventoy_status == "Failed":
+                # Failed state
+                ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(255, 80, 80, 255).value)
+                ImGui.text(f"{icons_fontawesome_6.ICON_FA_CIRCLE_XMARK}  Installation failed!")
+                ImGui.pop_style_color()
+
+                if state.ventoy_log:
+                    ImGui.spacing()
+                    ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(150, 150, 150, 255).value)
+                    ImGui.text_wrapped(state.ventoy_log[:300])
+                    ImGui.pop_style_color()
+
+                ImGui.spacing()
+                ImGui.push_style_color(ImGui.Col_.button, ImGui.ImColor(30, 30, 40, 255).value)
+                ImGui.push_style_color(ImGui.Col_.button_hovered, ImGui.ImColor(45, 45, 55, 255).value)
+                if ImGui.button("Try Again##retry", ImGui.ImVec2(150, 35)):
+                    state.ventoy_status = "Ready"
+                    state.ventoy_progress = 0.0
+                    state.ventoy_log = ""
+                ImGui.pop_style_color(2)
+
+                # ── Recover USB Section ──
+                ImGui.spacing()
+                ImGui.separator()
+                ImGui.spacing()
+                Gui._section_header(icons_fontawesome_6.ICON_FA_SCREWDRIVER_WRENCH, "Recover USB Drive")
+                ImGui.spacing()
+
+                ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(180, 180, 180, 255).value)
+                ImGui.text_wrapped("USB disappeared? Click Scan to find it, then Recover to create a new partition.")
+                ImGui.pop_style_color()
+                ImGui.spacing()
+
+                # Scan button
+                ImGui.push_style_color(ImGui.Col_.button, ImGui.ImColor(30, 30, 40, 255).value)
+                ImGui.push_style_color(ImGui.Col_.button_hovered, ImGui.ImColor(45, 45, 55, 255).value)
+                ImGui.push_style_color(ImGui.Col_.button_active, ImGui.ImColor(55, 55, 65, 255).value)
+                if ImGui.button(f"{icons_fontawesome_6.ICON_FA_MAGNIFYING_GLASS}  Scan USB Disks##scan_raw", ImGui.ImVec2(200, 30)):
+                    state.ventoy_raw_disks = Ventoy.list_raw_usb_disks()
+                    state.ventoy_selected_raw_disk = 0
+                ImGui.pop_style_color(3)
+
+                if state.ventoy_raw_disks:
+                    ImGui.spacing()
+                    raw_labels = [d["label"] for d in state.ventoy_raw_disks]
+                    raw_combo = "\0".join(raw_labels) + "\0"
+
+                    ImGui.set_next_item_width(ImGui.get_content_region_avail().x - 120)
+                    ImGui.push_style_color(ImGui.Col_.frame_bg, ImGui.ImColor(20, 20, 25, 255).value)
+                    ImGui.push_style_color(ImGui.Col_.popup_bg, ImGui.ImColor(15, 15, 20, 255).value)
+                    _, state.ventoy_selected_raw_disk = ImGui.combo("##raw_disk_select", state.ventoy_selected_raw_disk, raw_combo)
+                    ImGui.pop_style_color(2)
+
+                    ImGui.same_line()
+
+                    # Recover button (orange)
+                    ImGui.push_style_color(ImGui.Col_.button, ImGui.ImColor(200, 120, 0, 255).value)
+                    ImGui.push_style_color(ImGui.Col_.button_hovered, ImGui.ImColor(230, 150, 30, 255).value)
+                    ImGui.push_style_color(ImGui.Col_.button_active, ImGui.ImColor(170, 100, 0, 255).value)
+                    if ImGui.button(f"{icons_fontawesome_6.ICON_FA_WRENCH}  Recover##recover_btn", ImGui.ImVec2(110, 0)):
+                        if 0 <= state.ventoy_selected_raw_disk < len(state.ventoy_raw_disks):
+                            disk_num = state.ventoy_raw_disks[state.ventoy_selected_raw_disk]["number"]
+                            Ventoy.recover_usb(disk_num)
+                    ImGui.pop_style_color(3)
+                else:
+                    ImGui.spacing()
+                    ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(100, 100, 100, 255).value)
+                    ImGui.text("Click 'Scan USB Disks' to find your USB drive.")
+                    ImGui.pop_style_color()
+
+            else:
+                # Ready — show install button
+                has_usb = len(state.ventoy_usb_list) > 0
+
+                if not has_usb:
+                    ImGui.begin_disabled()
+
+                # Styled install button (primary color)
+                ImGui.push_style_color(ImGui.Col_.button, ImGui.ImColor(0, 160, 220, 255).value)
+                ImGui.push_style_color(ImGui.Col_.button_hovered, ImGui.ImColor(0, 189, 253, 255).value)
+                ImGui.push_style_color(ImGui.Col_.button_active, ImGui.ImColor(0, 130, 180, 255).value)
+                ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(255, 255, 255, 255).value)
+
+                btn_width = ImGui.get_content_region_avail().x
+                if ImGui.button(f"{icons_fontawesome_6.ICON_FA_DOWNLOAD}   Install Ventoy##install_btn", ImGui.ImVec2(btn_width, 42)):
+                    if state.ventoy_usb_list and 0 <= state.ventoy_selected_usb < len(state.ventoy_usb_list):
+                        selected_usb = state.ventoy_usb_list[state.ventoy_selected_usb]
+                        Ventoy.install_ventoy(selected_usb["drive_letter"], selected_usb.get("phy_drive"))
+
+                ImGui.pop_style_color(4)
+
+                if not has_usb:
+                    ImGui.end_disabled()
+                    ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(255, 180, 50, 255).value)
+                    ImGui.text(f"{icons_fontawesome_6.ICON_FA_TRIANGLE_EXCLAMATION}  No USB drive detected. Please insert a USB drive and click Refresh.")
+                    ImGui.pop_style_color()
+
+        ImGui.end_child()
+        ImGui.pop_style_color(2)
+        ImGui.pop_style_var(2)
+
+    def _section_header(icon, text):
+        ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(*Config.color_primary).value)
+        ImGui.text(icon)
+        ImGui.pop_style_color()
+        ImGui.same_line()
+        ImGui.text(text)
