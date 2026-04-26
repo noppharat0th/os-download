@@ -25,7 +25,6 @@ class Ventoy:
 
     @staticmethod
     def _get_physical_drive_number(drive_letter):
-        """Get the physical drive number for a drive letter using Windows API."""
         try:
             # Use wmic to get physical drive number from drive letter
             letter = drive_letter.rstrip(":\\")

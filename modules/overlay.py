@@ -1,6 +1,6 @@
 import random
 import time
-from imgui_bundle import imgui as ImGui
+from imgui_bundle import imgui as ImGui, imspinner
 
 class Particle:
     def __init__(self, width, height):

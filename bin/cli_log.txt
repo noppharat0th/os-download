@@ -1,0 +1,252 @@
+[2026/04/26 16:13:34.875] 
+##################################################################################
+############################## Ventoy2DiskX64 CLI MODE #############################
+##################################################################################
+[2026/04/26 16:13:34.875] Current Directory <C:\Users\toons\Desktop\github\os-download\bin>
+[2026/04/26 16:13:34.875] Exe file path <C:\Users\toons\Desktop\github\os-download\bin\altexe\Ventoy2Disk_X64.exe>
+[2026/04/26 16:13:34.875] Change current dir to exe <C:\Users\toons\Desktop\github\os-download\bin\altexe>
+[2026/04/26 16:13:34.875] altexe detected, change current dir to <C:\Users\toons\Desktop\github\os-download\bin>
+[2026/04/26 16:13:34.876] Current directory:<C:\Users\toons\Desktop\github\os-download\bin>
+[2026/04/26 16:13:34.889] ######### Current Ventoy Version: Ventoy2DiskX64 1.1.06 ########
+[2026/04/26 16:13:34.898] GetSystemWow64DirectoryA=<C:\WINDOWS\SysWOW64>
+[2026/04/26 16:13:34.909] Windows Version: <<Windows 11 Home Single Language, 64-bit (Build 26200.8246)>>
+[2026/04/26 16:13:34.916] Ventoy CLI install PhyDrive:2 GPT SecureBoot:0 ReserveSpace:0MB USBCheck:0 FS:EXFAT NonDest:0
+[2026/04/26 16:13:34.930] Create file Handle:00000000000003EC \\.\PhysicalDrive2 status:0
+[2026/04/26 16:13:34.949] PHYSICALDRIVE2 size 268435456000 bytes
+[2026/04/26 16:13:34.960] DeviceIoControl3 error:1 dwBytes:123
+[2026/04/26 16:13:34.974] PhyDrive:2 BusType:USB  Removable:1 Size:250GB(268435456000) Name:VendorCo ProductCode
+[2026/04/26 16:13:34.985] Create file Handle:00000000000005A8 \\.\PhysicalDrive2 status:0
+[2026/04/26 16:13:34.992] Read MBR Ret:1 Size:512 code:183
+[2026/04/26 16:13:35.011] =========== Disk2 GPT Partition 1 ============
+[2026/04/26 16:13:35.016] PartTbl.PartType = {ebd0a0a2-b9e5-4433-87c0-68b6b72699c7}
+[2026/04/26 16:13:35.025] PartTbl.PartGuid = {dc5c0609-0da1-4a41-9d5e-e47b21a55f88}
+[2026/04/26 16:13:35.037] PartTbl.StartLBA = 2048
+[2026/04/26 16:13:35.048] PartTbl.LastLBA = 524285951
+[2026/04/26 16:13:35.056] PartTbl.Attribute = 0x0
+[2026/04/26 16:13:35.070] PartTbl.Name = Basic data partition
+[2026/04/26 16:13:35.083] Invalid ventoy efi part name <null>
+[2026/04/26 16:13:35.099] system_dir=<C:\WINDOWS\system32>
+[2026/04/26 16:13:35.119] sysnative_dir=<C:\WINDOWS\system32>
+[2026/04/26 16:13:35.135] LoadLibrary shell32.dll.mui SUCCESS
+[2026/04/26 16:13:35.143] SetAlertPromptHook SUCCESS
+[2026/04/26 16:13:35.156] Ventoy_CLI_Install start ...
+[2026/04/26 16:13:35.171] #####################################################
+[2026/04/26 16:13:35.186] InstallVentoy2PhyDrive try1 GPT PhyDrive2 <<VendorCo ProductCode 250GB>>
+[2026/04/26 16:13:35.204] #####################################################
+[2026/04/26 16:13:35.217] Copy boot img success
+[2026/04/26 16:13:35.227] Disk signature: 0x179cb18d
+[2026/04/26 16:13:35.242] Part1SectorCount:524220383 is not aligned by 4KB (7)
+[2026/04/26 16:13:35.259] Disk need to align with 4KB 7
+[2026/04/26 16:13:35.274] Lock disk for clean ............................. 
+[2026/04/26 16:13:35.284] QueryDosDeviceA success \Device\Harddisk2\DR6
+[2026/04/26 16:13:35.303] [0] CreateFileA \\.\PhysicalDrive2 code:0 00000000000005AC
+[2026/04/26 16:13:35.312] FSCTL_LOCK_VOLUME success
+[2026/04/26 16:13:35.331] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:227540992 ExtentLength:510244421632
+[2026/04/26 16:13:35.349] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:16777216 ExtentLength:1000186314752
+[2026/04/26 16:13:35.362] No drive letter was assigned...
+[2026/04/26 16:13:35.372] GetFirstUnusedDriveLetter E: ...
+[2026/04/26 16:13:35.384] Will use 'E:' as volume mountpoint
+[2026/04/26 16:13:35.426] VDS init OK, service 00000000005D3278
+[2026/04/26 16:13:35.448] VDS_DeleteAllPartitions 2 ret:0 (FAIL)
+[2026/04/26 16:13:35.449] Notice: Could not delete partitions: 0xb7, but we continue.
+[2026/04/26 16:13:35.469] Deleting all partitions ......................... OK
+[2026/04/26 16:13:35.485] Lock disk for write ............................. 
+[2026/04/26 16:13:35.502] QueryDosDeviceA success \Device\Harddisk2\DR6
+[2026/04/26 16:13:35.525] [0] CreateFileA \\.\PhysicalDrive2 code:0 0000000000000650
+[2026/04/26 16:13:35.542] Opened \\.\PhysicalDrive2 for exclusive write access
+[2026/04/26 16:13:35.562] FSCTL_LOCK_VOLUME success
+[2026/04/26 16:13:35.578] Wait for format part1 ...
+[2026/04/26 16:13:40.606] Formatting part1 exFAT ...
+[2026/04/26 16:13:40.606] Formatting Part1 exFAT ...
+[2026/04/26 16:13:40.640] WriteFile error bRet:0 WriteSize:4608 dwSize:0 ErrCode:5
+[2026/04/26 16:13:40.660] WriteFile error bRet:0 WriteSize:256000 dwSize:0 ErrCode:5
+[2026/04/26 16:13:40.679] WriteFile error bRet:0 WriteSize:8190976 dwSize:0 ErrCode:5
+[2026/04/26 16:13:40.699] WriteFile error bRet:0 WriteSize:131072 dwSize:0 ErrCode:5
+[2026/04/26 16:13:40.715] WriteFile error bRet:0 WriteSize:512 dwSize:0 ErrCode:5
+[2026/04/26 16:13:40.728] WriteFile error bRet:0 WriteSize:512 dwSize:0 ErrCode:5
+[2026/04/26 16:13:40.743] WriteFile error bRet:0 WriteSize:512 dwSize:0 ErrCode:5
+[2026/04/26 16:13:40.755] WriteFile error bRet:0 WriteSize:512 dwSize:0 ErrCode:5
+[2026/04/26 16:13:40.770] WriteFile error bRet:0 WriteSize:512 dwSize:0 ErrCode:5
+[2026/04/26 16:13:40.781] WriteFile error bRet:0 WriteSize:512 dwSize:0 ErrCode:5
+[2026/04/26 16:13:40.801] Formatting Part1 exFAT failed, write error.
+[2026/04/26 16:13:40.818] FormatPart1exFAT failed.
+[2026/04/26 16:13:40.840] FindProcessOccupyDisk for PhyDrive 2
+[2026/04/26 16:13:40.854] QueryDosDeviceA success \Device\Harddisk2\DR6
+[2026/04/26 16:13:40.942] handles->NumberOfHandles = 151943
+[2026/04/26 16:13:40.942] NOTE: Could not identify the process(es) or service(s) accessing \Device\Harddisk2\DR6
+[2026/04/26 16:13:40.958] This time install failed, clean disk by disk, wait 3s and retry...
+[2026/04/26 16:13:40.991] VDS init OK, service 00000000033D3128
+[2026/04/26 16:13:41.036] VDS_CleanDisk 2 ret:0 (FAIL)
+[2026/04/26 16:13:41.037] CreateProcess <C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe -Command "&{ Clear-Disk -Number 2 -RemoveData -RemoveOEM -Confirm:$false }">
+[2026/04/26 16:13:41.067] Wair process ...
+[2026/04/26 16:13:44.879] Process finished...
+[2026/04/26 16:13:44.879] CleanDiskByPowershell<2> ret:1 (SUCCESS)
+[2026/04/26 16:13:47.921] Now retry to install...
+[2026/04/26 16:13:47.921] #####################################################
+[2026/04/26 16:13:47.947] InstallVentoy2PhyDrive try2 GPT PhyDrive2 <<VendorCo ProductCode 250GB>>
+[2026/04/26 16:13:47.971] #####################################################
+[2026/04/26 16:13:47.990] Disk signature: 0xd1a97782
+[2026/04/26 16:13:48.014] Part1SectorCount:524220383 is not aligned by 4KB (7)
+[2026/04/26 16:13:48.042] Disk need to align with 4KB 7
+[2026/04/26 16:13:48.059] Lock disk for clean ............................. 
+[2026/04/26 16:13:48.072] QueryDosDeviceA success \Device\Harddisk2\DR6
+[2026/04/26 16:13:48.615] [0] CreateFileA \\.\PhysicalDrive2 code:0 0000000000000684
+[2026/04/26 16:13:48.616] FSCTL_LOCK_VOLUME success
+[2026/04/26 16:13:48.632] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:227540992 ExtentLength:510244421632
+[2026/04/26 16:13:48.649] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:16777216 ExtentLength:1000186314752
+[2026/04/26 16:13:48.664] No drive letter was assigned...
+[2026/04/26 16:13:48.681] GetFirstUnusedDriveLetter E: ...
+[2026/04/26 16:13:48.702] Will use 'E:' as volume mountpoint
+[2026/04/26 16:13:48.741] VDS init OK, service 00000000033D25A8
+[2026/04/26 16:13:48.766] VDS_DeleteAllPartitions 2 ret:0 (FAIL)
+[2026/04/26 16:13:48.767] Notice: Could not delete partitions: 0xb7, but we continue.
+[2026/04/26 16:13:48.786] Deleting all partitions ......................... OK
+[2026/04/26 16:13:48.802] Lock disk for write ............................. 
+[2026/04/26 16:13:48.825] QueryDosDeviceA success \Device\Harddisk2\DR6
+[2026/04/26 16:13:48.846] [0] CreateFileA \\.\PhysicalDrive2 code:0 0000000000000688
+[2026/04/26 16:13:48.865] Opened \\.\PhysicalDrive2 for exclusive write access
+[2026/04/26 16:13:48.882] FSCTL_LOCK_VOLUME success
+[2026/04/26 16:13:48.899] Wait for format part1 ...
+[2026/04/26 16:13:53.914] Formatting part1 exFAT ...
+[2026/04/26 16:13:53.914] Formatting Part1 exFAT ...
+[2026/04/26 16:13:55.341] Formatting Part1 exFAT success
+[2026/04/26 16:13:55.342] Writing part2 FAT img ...
+[2026/04/26 16:13:55.361] FormatPart2Fat 524222424...
+[2026/04/26 16:13:55.386] Malloc whole img buffer success, now decompress ...
+[2026/04/26 16:13:55.913] decompress finished success
+[2026/04/26 16:13:55.913] VentoyProcSecureBoot 0 ...
+[2026/04/26 16:13:55.937] Open ventoy efi file 0000000140055B20 
+[2026/04/26 16:13:55.951] ventoy efi file size 1916928 ...
+[2026/04/26 16:13:55.966] Now delete all efi files ...
+[2026/04/26 16:13:55.978] Open bootx64 efi file 0000000140055B20 
+[2026/04/26 16:13:56.604] Open ventoy efi file 0000000140055F70 
+[2026/04/26 16:13:56.604] ventoy efi file size 1290240 ...
+[2026/04/26 16:13:56.622] Now delete all efi files ...
+[2026/04/26 16:13:56.636] Open bootia32 efi file 0000000140055B20 
+[2026/04/26 16:13:58.688] Write part data bRet:1 dwSize:1048576 code:183
+[2026/04/26 16:13:58.838] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:13:59.414] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:13:59.530] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:13:59.645] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:13:59.761] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:13:59.929] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:00.045] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:00.160] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:00.275] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:00.443] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:00.559] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:00.674] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:00.790] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:00.966] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:01.081] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:01.197] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:01.313] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:01.480] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:01.595] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:01.710] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:01.826] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:01.994] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:02.109] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:02.225] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:02.340] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:02.507] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:02.622] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:02.738] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:02.855] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:03.031] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:03.146] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:03.194] Read part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:03.195] ### [Check Fail] The data write and read does not match
+[2026/04/26 16:14:03.214] FormatPart2Fat failed.
+[2026/04/26 16:14:03.228] FindProcessOccupyDisk for PhyDrive 2
+[2026/04/26 16:14:03.243] QueryDosDeviceA success \Device\Harddisk2\DR6
+[2026/04/26 16:14:03.339] handles->NumberOfHandles = 151746
+[2026/04/26 16:14:03.340] NOTE: Could not identify the process(es) or service(s) accessing \Device\Harddisk2\DR6
+[2026/04/26 16:14:03.358] This time install failed, clean disk by diskpart, wait 5s and retry...
+[2026/04/26 16:14:03.375] CleanDiskByDiskpart <2>
+[2026/04/26 16:14:03.396] CreateProcess <C:\Windows\system32\diskpart.exe /s "C:\Users\toons\Desktop\github\os-download\bin\ventoy\diskpart_4800.txt">
+[2026/04/26 16:14:03.420] Wair process ...
+[2026/04/26 16:14:03.606] Process finished...
+[2026/04/26 16:14:08.618] Now retry to install...
+[2026/04/26 16:14:08.618] #####################################################
+[2026/04/26 16:14:08.642] InstallVentoy2PhyDrive try3 GPT PhyDrive2 <<VendorCo ProductCode 250GB>>
+[2026/04/26 16:14:08.669] #####################################################
+[2026/04/26 16:14:08.690] Disk signature: 0xdc239251
+[2026/04/26 16:14:08.714] Part1SectorCount:524220383 is not aligned by 4KB (7)
+[2026/04/26 16:14:08.728] Disk need to align with 4KB 7
+[2026/04/26 16:14:08.751] Lock disk for clean ............................. 
+[2026/04/26 16:14:08.766] QueryDosDeviceA success \Device\Harddisk2\DR6
+[2026/04/26 16:14:08.786] [0] CreateFileA \\.\PhysicalDrive2 code:0 0000000000000688
+[2026/04/26 16:14:08.801] FSCTL_LOCK_VOLUME success
+[2026/04/26 16:14:08.812] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:227540992 ExtentLength:510244421632
+[2026/04/26 16:14:08.825] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:16777216 ExtentLength:1000186314752
+[2026/04/26 16:14:08.845] No drive letter was assigned...
+[2026/04/26 16:14:08.857] GetFirstUnusedDriveLetter E: ...
+[2026/04/26 16:14:08.880] Will use 'E:' as volume mountpoint
+[2026/04/26 16:14:08.919] VDS init OK, service 00000000033ACD18
+[2026/04/26 16:14:08.966] VDS_DeleteAllPartitions 2 ret:0 (FAIL)
+[2026/04/26 16:14:08.966] Notice: Could not delete partitions: 0xb7, but we continue.
+[2026/04/26 16:14:08.985] Deleting all partitions ......................... OK
+[2026/04/26 16:14:09.008] Lock disk for write ............................. 
+[2026/04/26 16:14:09.030] QueryDosDeviceA success \Device\Harddisk2\DR6
+[2026/04/26 16:14:09.051] [0] CreateFileA \\.\PhysicalDrive2 code:0 0000000000000698
+[2026/04/26 16:14:09.063] Opened \\.\PhysicalDrive2 for exclusive write access
+[2026/04/26 16:14:09.078] FSCTL_LOCK_VOLUME success
+[2026/04/26 16:14:09.093] Wait for format part1 ...
+[2026/04/26 16:14:14.120] Formatting part1 exFAT ...
+[2026/04/26 16:14:14.121] Formatting Part1 exFAT ...
+[2026/04/26 16:14:16.268] Formatting Part1 exFAT success
+[2026/04/26 16:14:16.269] Writing part2 FAT img ...
+[2026/04/26 16:14:16.290] FormatPart2Fat 524222424...
+[2026/04/26 16:14:16.318] Malloc whole img buffer success, now decompress ...
+[2026/04/26 16:14:16.825] decompress finished success
+[2026/04/26 16:14:16.825] VentoyProcSecureBoot 0 ...
+[2026/04/26 16:14:16.845] Open ventoy efi file 0000000140055B20 
+[2026/04/26 16:14:16.863] ventoy efi file size 1916928 ...
+[2026/04/26 16:14:16.881] Now delete all efi files ...
+[2026/04/26 16:14:16.896] Open bootx64 efi file 0000000140055B20 
+[2026/04/26 16:14:17.508] Open ventoy efi file 0000000140055F70 
+[2026/04/26 16:14:17.508] ventoy efi file size 1290240 ...
+[2026/04/26 16:14:17.533] Now delete all efi files ...
+[2026/04/26 16:14:17.551] Open bootia32 efi file 0000000140055B20 
+[2026/04/26 16:14:18.822] Write part data bRet:1 dwSize:1048576 code:183
+[2026/04/26 16:14:18.938] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:19.847] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:19.963] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:20.078] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:20.192] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:20.360] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:20.476] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:20.591] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:20.706] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:20.874] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:20.990] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:21.105] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:21.221] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:21.398] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:21.513] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:21.628] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:21.744] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:21.911] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:22.026] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:22.141] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:22.256] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:22.424] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:22.539] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:22.655] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:22.770] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:22.937] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:23.053] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:23.167] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:23.284] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:23.460] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:23.576] Write part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:23.623] Read part data bRet:1 dwSize:1048576 code:131
+[2026/04/26 16:14:23.623] ### [Check Fail] The data write and read does not match
+[2026/04/26 16:14:23.646] FormatPart2Fat failed.
+[2026/04/26 16:14:23.664] FindProcessOccupyDisk for PhyDrive 2
+[2026/04/26 16:14:23.681] QueryDosDeviceA success \Device\Harddisk2\DR6
+[2026/04/26 16:14:23.777] handles->NumberOfHandles = 151261
+[2026/04/26 16:14:23.778] NOTE: Could not identify the process(es) or service(s) accessing \Device\Harddisk2\DR6
+[2026/04/26 16:14:23.793] Ventoy_CLI_Install [FAILED]
+[2026/04/26 16:14:23.811] [ERROR] ######### Ventoy CLI FAILED #########

@@ -4,12 +4,13 @@ import time
 
 import cv2
 from glm import pos
-from imgui_bundle import ImColor, imgui as ImGui, icons_fontawesome_6, immvision
+from imgui_bundle import ImColor, imgui as ImGui, icons_fontawesome_6, immvision, imspinner
 import threading
 from modules.config import state, Config, format_time, resource_path
 from modules.downloads import Dowloads
 from modules.ventoy import Ventoy
 from modules.overlay import Particle
+from modules.ui import UI
 
 tab_bar_width = 90
 tab_menu = [
@@ -33,6 +34,51 @@ class Gui():
     os_images = {}
     logo = None
     selected_usb_index = 0
+    search_query = ""
+    os_filter = "All"
+
+    @staticmethod
+    def render_home_controls():
+        ImGui.push_style_var(ImGui.StyleVar_.window_padding, ImGui.ImVec2(0, 0))
+        ImGui.push_style_var(ImGui.StyleVar_.item_spacing, ImGui.ImVec2(10, 10))
+        ImGui.push_style_color(ImGui.Col_.child_bg, ImGui.ImColor(0, 0, 0, 0).value)
+        ImGui.push_style_color(ImGui.Col_.border, ImGui.ImColor(0, 0, 0, 0).value)
+
+        content_avail = ImGui.get_content_region_avail()
+        if ImGui.begin_child("home_controls", ImGui.ImVec2(content_avail.x, 40), ImGui.ChildFlags_.borders):
+            ImGui.set_cursor_pos_y(5)
+            
+            # Filter Buttons
+            filters = ["All", "Window", "Linux"]
+            for f in filters:
+                if Gui.os_filter == f:
+                    ImGui.push_style_color(ImGui.Col_.button, ImGui.ImColor(*Config.color_primary).value)
+                    ImGui.push_style_color(ImGui.Col_.button_hovered, ImGui.ImColor(*Config.color_primary).value)
+                    ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(255, 255, 255, 255).value)
+                else:
+                    ImGui.push_style_color(ImGui.Col_.button, ImGui.ImColor(30, 30, 40, 255).value)
+                    ImGui.push_style_color(ImGui.Col_.button_hovered, ImGui.ImColor(45, 45, 55, 255).value)
+                    ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(150, 150, 150, 255).value)
+                
+                if ImGui.button(f, ImGui.ImVec2(80, 30)):
+                    Gui.os_filter = f
+                    
+                ImGui.pop_style_color(3)
+                ImGui.same_line()
+
+            # Search bar
+            ImGui.same_line(ImGui.get_window_width() - 260)
+            ImGui.set_next_item_width(230)
+            ImGui.push_style_color(ImGui.Col_.frame_bg, ImGui.ImColor(25, 25, 35, 255).value)
+            ImGui.push_style_color(ImGui.Col_.border, ImGui.ImColor(*Config.color_border).value)
+            ImGui.push_style_var(ImGui.StyleVar_.frame_padding, ImGui.ImVec2(10, 10))
+            changed, Gui.search_query = ImGui.input_text_with_hint("##search", f"{icons_fontawesome_6.ICON_FA_MAGNIFYING_GLASS} Search OS...", Gui.search_query)
+            ImGui.pop_style_var()
+            ImGui.pop_style_color(2)
+
+        ImGui.end_child()
+        ImGui.pop_style_color(2)
+        ImGui.pop_style_var(2)
 
     # overlay
     def render_particles():
@@ -103,7 +149,7 @@ class Gui():
         if ImGui.begin_child("sidebar", ImGui.ImVec2(tab_bar_width, full_height)):
             for item in tab_menu:
                 is_active = (Gui.current_page == item['name'])
-                if Gui.draw_tab_menu(item['icon'], item['name'], is_active):
+                if UI.glow_icon_button(item['icon'], item['name'], is_active):
                     Gui.current_page = item['name']
         ImGui.end_child()
         ImGui.pop_style_color()   
@@ -123,8 +169,22 @@ class Gui():
         current_pos = ImGui.get_cursor_pos()
         ImGui.set_cursor_pos(ImGui.ImVec2(current_pos.x + margin_x, current_pos.y + margin_y))
         if Gui.current_page == "Home":
-            Gui.card_show_os("Window", windows_list)
-            Gui.card_show_os("Linux", linux_list)
+            Gui.render_home_controls()
+            
+            filtered_windows = [os for os in windows_list if Gui.search_query.lower() in os['display_name'].lower()]
+            filtered_linux = [os for os in linux_list if Gui.search_query.lower() in os['display_name'].lower()]
+
+            if Gui.os_filter in ["All", "Window"] and filtered_windows:
+                Gui.card_show_os("Window", filtered_windows)
+            if Gui.os_filter in ["All", "Linux"] and filtered_linux:
+                Gui.card_show_os("Linux", filtered_linux)
+                
+            if not filtered_windows and not filtered_linux:
+                ImGui.spacing()
+                ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(150, 150, 150, 255).value)
+                ImGui.text(f"{icons_fontawesome_6.ICON_FA_MAGNIFYING_GLASS} No OS found for '{Gui.search_query}'")
+                ImGui.pop_style_color()
+
         elif Gui.current_page == "Settings":
             Gui.render_ventoy_page()
 
@@ -132,24 +192,7 @@ class Gui():
         ImGui.pop_style_var()
     
         
-    def draw_tab_menu(icon, label_id, is_active=False):
-        btn_width = 60
-        ImGui.set_cursor_pos_x((90 - btn_width) / 2)
-
-        if is_active:
-            ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(*Config.color_primary).value)
-        else:
-            ImGui.push_style_color(ImGui.Col_.text, ImGui.ImVec4(0.5, 0.5, 0.5, 1.0))
-
-        ImGui.push_style_color(ImGui.Col_.button, ImGui.ImVec4(0, 0, 0, 0))
-        ImGui.push_style_color(ImGui.Col_.border, ImGui.ImVec4(0, 0, 0, 0))
-        ImGui.push_style_color(ImGui.Col_.button_hovered, ImGui.ImVec4(0, 0, 0, 0))
-        ImGui.push_style_color(ImGui.Col_.button_active, ImGui.ImVec4(0, 0, 0, 0))
-        
-        clicked = ImGui.button(f"{icon}##{label_id}", ImGui.ImVec2(btn_width, 60))
-        ImGui.pop_style_color(5)
-        
-        return clicked
+    # draw_tab_menu is replaced by UI.glow_icon_button
 
     def navbar():
         avail = ImGui.get_content_region_avail()
@@ -159,9 +202,50 @@ class Gui():
         
         ImGui.push_style_var(ImGui.StyleVar_.child_rounding, 5.0)
         if ImGui.begin_child("navbar", ImGui.ImVec2(avail.x, 50), ImGui.ChildFlags_.borders):
-            ImGui.set_cursor_pos_y(15) 
+            # Auto-scan USB
+            if not state.ventoy_usb_list:
+                Ventoy.refresh_usb_list()
+
+            # Page title (left)
+            ImGui.set_cursor_pos_y(15)
             ImGui.set_cursor_pos_x(15)
-            ImGui.text_disabled("")
+            ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(220, 220, 220, 255).value)
+            ImGui.text(Gui.current_page)
+            ImGui.pop_style_color()
+
+            # ── Right side: Save to dropdown + refresh ──
+            dropdown_width = 260
+            refresh_width = 28
+            right_padding = 12
+            total_right = dropdown_width + refresh_width + 8 + right_padding
+
+            navbar_width = avail.x
+            start_x = navbar_width - total_right
+
+            ImGui.set_cursor_pos(ImGui.ImVec2(start_x, 11))
+
+            # Build items for dropdown: "Local" + USB drives
+            combo_labels = [f"{icons_fontawesome_6.ICON_FA_FOLDER_OPEN}  Local (downloads/)"]
+            for usb in state.ventoy_usb_list:
+                combo_labels.append(f"{icons_fontawesome_6.ICON_FA_HARD_DRIVE}  {usb['label']}")
+
+            # combo index: 0 = local, 1+ = usb
+            combo_idx = state.download_selected_usb + 1
+            if combo_idx >= len(combo_labels):
+                combo_idx = 0
+                state.download_selected_usb = -1
+
+            changed, new_idx = UI.dropdown("dl_dest", combo_labels, combo_idx, width=dropdown_width)
+            if changed:
+                state.download_selected_usb = new_idx - 1
+
+            ImGui.same_line()
+            ImGui.set_cursor_pos_y(11)
+
+            # Refresh button
+            if UI.icon_button(icons_fontawesome_6.ICON_FA_ARROWS_ROTATE, "refresh_dl_usb", size=refresh_width):
+                Ventoy.refresh_usb_list()
+                state.download_selected_usb = -1
             
         ImGui.end_child()
 
@@ -251,7 +335,12 @@ class Gui():
                             if ImGui.button("DownLoad", ImGui.ImVec2(button_width, 30)):
                                 state.current_download_id = item['id']
                                 clean_filename = f"{item['display_name'].replace(' ', '_')}.iso"
-                                threading.Thread(target=Dowloads.download_iso, args=(item['url'], clean_filename), daemon=True).start()
+                                # Determine save directory
+                                save_dir = None
+                                if state.download_selected_usb >= 0 and state.download_selected_usb < len(state.ventoy_usb_list):
+                                    usb = state.ventoy_usb_list[state.download_selected_usb]
+                                    save_dir = usb["mountpoint"]
+                                threading.Thread(target=Dowloads.download_iso, args=(item['url'], clean_filename, save_dir), daemon=True).start()
                         
                         if state.is_downloading and state.current_download_id == item['id'] :
                             download_percent = state.download_progress
@@ -383,20 +472,18 @@ class Gui():
             if not state.ventoy_usb_list:
                 Ventoy.refresh_usb_list()
 
-            # Build items string for combo
+            # Build items list for custom dropdown
             usb_labels = [usb["label"] for usb in state.ventoy_usb_list]
-            combo_items = "\0".join(usb_labels) + "\0" if usb_labels else "No USB Found\0"
+            if not usb_labels:
+                usb_labels = ["No USB Found"]
 
-            ImGui.set_next_item_width(ImGui.get_content_region_avail().x - 120)
-            ImGui.push_style_color(ImGui.Col_.frame_bg, ImGui.ImColor(20, 20, 25, 255).value)
-            ImGui.push_style_color(ImGui.Col_.frame_bg_hovered, ImGui.ImColor(30, 30, 40, 255).value)
-            ImGui.push_style_color(ImGui.Col_.popup_bg, ImGui.ImColor(15, 15, 20, 255).value)
-            changed, state.ventoy_selected_usb = ImGui.combo(
-                "##usb_select",
-                state.ventoy_selected_usb,
-                combo_items
+            dropdown_width = ImGui.get_content_region_avail().x - 120
+            changed, state.ventoy_selected_usb = UI.dropdown(
+                "ventoy_usb_select", 
+                usb_labels, 
+                state.ventoy_selected_usb, 
+                width=dropdown_width
             )
-            ImGui.pop_style_color(3)
 
             ImGui.same_line()
 
@@ -603,8 +690,4 @@ class Gui():
         ImGui.pop_style_var(2)
 
     def _section_header(icon, text):
-        ImGui.push_style_color(ImGui.Col_.text, ImGui.ImColor(*Config.color_primary).value)
-        ImGui.text(icon)
-        ImGui.pop_style_color()
-        ImGui.same_line()
-        ImGui.text(text)
+        UI.section_header(icon, text)

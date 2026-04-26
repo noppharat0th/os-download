@@ -1,17 +1,2 @@
-# Custom application files
 *.ini
 *.iso
-downloads/
-cli_log*.txt
-cli_percent.txt
-cli_done.txt
-
-# Python cache files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# PyInstaller / Build artifacts
-build/
-dist/
-*.spec

@@ -2,9 +2,7 @@ import os
 import sys
 
 def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
     try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
     except Exception:
         base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,6 +16,7 @@ class state:
     current_download_id = ""
     start_time_download = 0.0
     elapsed_time_download = 0.0
+    download_selected_usb = -1
 
     # Ventoy installer state
     ventoy_installing = False

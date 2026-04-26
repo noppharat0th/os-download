@@ -30,7 +30,7 @@ class Dowloads:
             print(e)
             return False
         
-    def download_iso(url, filename):
+    def download_iso(url, filename, save_dir=None):
         state.is_downloading = True
         state.status_msg = f"Downloading {filename}..."
         state.current_file = filename
@@ -41,10 +41,13 @@ class Dowloads:
             state.download_progress = p 
             state.elapsed_time_download = time.time() - state.start_time
 
-        if not os.path.exists("downloads"):
-            os.makedirs("downloads")
+        if save_dir is None:
+            save_dir = "downloads"
+        
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
 
-        save_path = f"downloads/{filename}"
+        save_path = os.path.join(save_dir, filename)
         success = Dowloads.start_download(url, save_path, on_progress)
         
         if success:
