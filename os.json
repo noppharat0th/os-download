@@ -5,6 +5,12 @@
             "display_name": "Windows 10",
             "url": "https://cdn.as212934.net/windows/Win10_22H2_English_x64v1.iso",
             "img": "assets/window-10.png"
+        },
+        {
+            "id": "win11_official",
+            "display_name": "Windows 11",
+            "url": "https://cdn.as212934.net/windows/Win11_23H2_English_x64v2.iso",
+            "img": "assets/window-11.png"
         }
     ],
     "linux": [
@@ -25,6 +31,18 @@
             "display_name": "Kali Linux",
             "url": "https://cdimage.kali.org/kali-2026.1/kali-linux-2026.1-installer-amd64.iso",
             "img": "assets/kali-linux.png"
+        },
+        {
+            "id": "linux_mint_22",
+            "display_name": "Linux Mint 22 'Wilma'",
+            "url": "https://mirrors.layeronline.com/linuxmint/stable/22/linuxmint-22-cinnamon-64bit.iso",
+            "img": "assets/mint-linux.png"
+        },
+        {
+            "id": "debian_13_4",
+            "display_name": "Debian 13.4.0 (Stable)",
+            "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-13.4.0-amd64-netinst.iso",
+            "img": "assets/debian-linux.png"
         }
     ]
 }
