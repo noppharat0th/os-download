@@ -233,8 +233,6 @@ class Ventoy:
     def _prepare_disk(drive_letter, phy_drive):
         try:
             letter = drive_letter.rstrip(":\\")
-            # Dismount the volume to release all handles
-            # This prevents Explorer, antivirus, etc. from interfering
             ps_script = f"""
                 $letter = '{letter}'
                 # Dismount volume

@@ -17,6 +17,7 @@ class state:
     start_time_download = 0.0
     elapsed_time_download = 0.0
     download_selected_usb = -1
+    custom_download_dir = None
 
     # Ventoy installer state
     ventoy_installing = False

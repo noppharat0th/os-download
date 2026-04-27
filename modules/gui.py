@@ -199,7 +199,8 @@ class Gui():
 
         ImGui.push_style_color(ImGui.Col_.border, ImGui.ImColor(*Config.color_border).value) 
         ImGui.push_style_color(ImGui.Col_.child_bg, ImGui.ImColor(*Config.color_secondary).value)
-        
+
+
         ImGui.push_style_var(ImGui.StyleVar_.child_rounding, 5.0)
         if ImGui.begin_child("navbar", ImGui.ImVec2(avail.x, 50), ImGui.ChildFlags_.borders):
             # Auto-scan USB
@@ -229,15 +230,41 @@ class Gui():
             for usb in state.ventoy_usb_list:
                 combo_labels.append(f"{icons_fontawesome_6.ICON_FA_HARD_DRIVE}  {usb['label']}")
 
-            # combo index: 0 = local, 1+ = usb
-            combo_idx = state.download_selected_usb + 1
+            # add custom folder option
+            custom_folder_idx = len(combo_labels)
+            if getattr(state, "custom_download_dir", None):
+                combo_labels.append(f"{icons_fontawesome_6.ICON_FA_FOLDER}  {state.custom_download_dir}")
+            else:
+                combo_labels.append(f"{icons_fontawesome_6.ICON_FA_FOLDER}  Choose custom folder...")
+
+            # combo index: 0 = local, 1..N = usb, N+1 = custom
+            if getattr(state, 'download_selected_usb', -1) == -2:
+                combo_idx = custom_folder_idx
+            else:
+                combo_idx = state.download_selected_usb + 1
+                
             if combo_idx >= len(combo_labels):
                 combo_idx = 0
                 state.download_selected_usb = -1
 
             changed, new_idx = UI.dropdown("dl_dest", combo_labels, combo_idx, width=dropdown_width)
+            
             if changed:
-                state.download_selected_usb = new_idx - 1
+                if new_idx == 0:
+                    state.download_selected_usb = -1
+                elif new_idx < custom_folder_idx:
+                    state.download_selected_usb = new_idx - 1
+                elif new_idx == custom_folder_idx:
+                    import tkinter as tk
+                    from tkinter import filedialog
+                    root = tk.Tk()
+                    root.withdraw()
+                    root.attributes('-topmost', True)
+                    folder_path = filedialog.askdirectory(title="Select Custom Download Folder")
+                    root.destroy()
+                    if folder_path:
+                        state.custom_download_dir = folder_path
+                        state.download_selected_usb = -2
 
             ImGui.same_line()
             ImGui.set_cursor_pos_y(11)
@@ -337,7 +364,9 @@ class Gui():
                                 clean_filename = f"{item['display_name'].replace(' ', '_')}.iso"
                                 # Determine save directory
                                 save_dir = None
-                                if state.download_selected_usb >= 0 and state.download_selected_usb < len(state.ventoy_usb_list):
+                                if getattr(state, 'download_selected_usb', -1) == -2 and getattr(state, "custom_download_dir", None):
+                                    save_dir = state.custom_download_dir
+                                elif state.download_selected_usb >= 0 and state.download_selected_usb < len(state.ventoy_usb_list):
                                     usb = state.ventoy_usb_list[state.download_selected_usb]
                                     save_dir = usb["mountpoint"]
                                 threading.Thread(target=Dowloads.download_iso, args=(item['url'], clean_filename, save_dir), daemon=True).start()
